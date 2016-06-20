@@ -52,3 +52,9 @@ Temporary Items
 *.class
 项目代码/QAFour/build/classes/QAFour.cfg.xml
 项目代码/QAFour/.springBeans
+*.prefs
+项目代码/QAFour/.settings/org.eclipse.wst.common.component
+项目代码/QAFour/.settings/org.eclipse.wst.jsdt.ui.superType.container
+*.name
+项目代码/QAFour/.settings/org.eclipse.wst.common.project.facet.core.xml
+项目代码/QAFour/build/classes/applicationContext.xml
