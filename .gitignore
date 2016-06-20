@@ -45,3 +45,10 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.classpath
+项目代码/QAFour/.project
+*.jsdtscope
+项目代码/QAFour/.settings/org.eclipse.jdt.core.prefs
+*.class
+项目代码/QAFour/build/classes/QAFour.cfg.xml
+项目代码/QAFour/.springBeans
