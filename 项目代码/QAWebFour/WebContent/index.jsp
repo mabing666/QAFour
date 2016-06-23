@@ -17,24 +17,30 @@
 <body>
 	<div style="margin-left: 800px; margin-top: 300px">
 		<div class="easyui-panel" title="Login"
-			style="width: 300px; padding: 10px 25px 20px 25px">
-			<table cellpadding="5">
-				<tr>
-					<td>User:</td>
-					<td><input id="uname" class="easyui-validatebox textbox"
-						data-options="required:true,validType:'length[3,10]'"></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input id="upwd" type="password"
-						class="easyui-validatebox textbox"
-						data-options="required:true,validType:'password'"></td>
-				</tr>
-				<tr>
-					<td><input type="button" onclick="postUserInfo()" value="登录" />
-					</td>
-				</tr>
-			</table>
+			style="width: 300px; height: 180px;">
+			<form style="padding: 10px 20px 10px 30px;">
+				<table cellpadding="5">
+					<tr>
+						<td>User:</td>
+						<td><input id="uname" class="easyui-validatebox textbox"
+							data-options="required:true,validType:'length[3,10]'"></td>
+					</tr>
+					<br />
+					<tr>
+						<td>Password:</td>
+						<td><input id="upwd" type="password"
+							class="easyui-validatebox textbox"
+							data-options="required:true,validType:'password'"></td>
+					</tr>
+
+				</table>
+				<br />
+				<div style="padding: 5px; text-align: center;">
+					<a onclick="postUserInfo()" class="easyui-linkbutton"
+						icon="icon-ok">登录</a> <a href="#" class="easyui-linkbutton"
+						icon="icon-cancel">注册</a>
+				</div>
+			</form>
 		</div>
 	</div>
 	<script>
