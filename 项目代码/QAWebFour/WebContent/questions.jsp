@@ -99,7 +99,7 @@
 
 .title {
 	margin-top: 10px;
-	width: 100px;
+	width: 300px;
 	height: 30px;
 	float: left;
 	background-color: #FFF0F5;

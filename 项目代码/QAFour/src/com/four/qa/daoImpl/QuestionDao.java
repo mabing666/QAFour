@@ -12,5 +12,7 @@ public class QuestionDao extends BaseDao<Question, String> {
 	public QuestionDao() {
 		super(Question.class);
 	}
+	
+	
 
 }
