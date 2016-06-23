@@ -13,15 +13,15 @@ body {
 }
 
 .navi ul {
+	
 	list-style: none;
-	margin-top: 15px;
+	margin-top: 10px;
 	float: right;
 }
 
 .navi ul li {
 	display: inline-block;
 }
-
 .navi ul li a {
 	color: white;
 	border: solid 1px white;
@@ -30,3 +30,7 @@ body {
 	padding-right: 15px;
 	border-radius: 6px;
 }
+
+</
+style
+>

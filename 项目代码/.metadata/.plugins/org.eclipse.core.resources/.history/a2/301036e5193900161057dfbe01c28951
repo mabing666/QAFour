@@ -21,7 +21,6 @@ body {
 .navi ul li {
 	display: inline-block;
 }
-
 .navi ul li a {
 	color: white;
 	border: solid 1px white;
@@ -30,3 +29,7 @@ body {
 	padding-right: 15px;
 	border-radius: 6px;
 }
+
+</
+style
+>
