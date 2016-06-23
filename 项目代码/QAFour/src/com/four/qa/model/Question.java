@@ -39,10 +39,10 @@ public class Question {
 	@Column(name = "qscontent", nullable = false)
 	private String qscontent;
 
-	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = UserInfo.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "qsuser", referencedColumnName = "ID")
-	private User qsuser;
+	private UserInfo qsuser;
 
 	@Column(name = "qstime", nullable = false)
 	private Date qstime;
@@ -50,7 +50,7 @@ public class Question {
 	public Question() {
 	}
 
-	public Question(String iD, String qstitle, String qscontent, User qsuser, Date qstime) {
+	public Question(String iD, String qstitle, String qscontent, UserInfo qsuser, Date qstime) {
 		super();
 		ID = iD;
 		this.qstitle = qstitle;
@@ -83,11 +83,11 @@ public class Question {
 		this.qscontent = qscontent;
 	}
 
-	public User getQsuser() {
+	public UserInfo getQsuser() {
 		return qsuser;
 	}
 
-	public void setQsuser(User qsuser) {
+	public void setQsuser(UserInfo qsuser) {
 		this.qsuser = qsuser;
 	}
 

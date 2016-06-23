@@ -5,15 +5,14 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
-import com.four.qa.model.User;
+import com.four.qa.model.UserInfo;
 
 /**
  * @author Tiaoyu
  * @date 2016/6/17
  */
-@Path("/User")
+@Path("/UserInfo")
 public interface IUserService {
 
 	/**
@@ -27,5 +26,5 @@ public interface IUserService {
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/doLogin")
-	public Response doLogin(User user);
+	public UserInfo doLogin(UserInfo user);
 }

@@ -34,4 +34,20 @@ public class TopicService implements ITopicService {
 		return topicDao.getByFID(tpid);
 	}
 
+	public Topic getTopic(String tpid) {
+		return topicDao.get(tpid);
+	}
+
+	public List<Topic> getUserFavourite(String uid) {
+		return topicDao.getByUID(uid);
+	}
+
+	public Topic getFatherTopic(String sid) {
+		return topicDao.getBySID(sid);
+	}
+
+	public List<Topic> getSonTopic(String fid) {
+		return topicDao.getByFID(fid);
+	}
+
 }

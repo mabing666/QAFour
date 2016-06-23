@@ -39,6 +39,11 @@ public class Answer {
 	@Column(name = "astime", nullable = false)
 	private Date astime;
 
+	@ManyToOne(targetEntity = UserInfo.class, fetch = FetchType.LAZY)
+	@Cascade(CascadeType.LOCK)
+	@JoinColumn(name = "asuser", referencedColumnName = "ID")
+	private UserInfo asuser;
+
 	@ManyToOne(targetEntity = Question.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "QID", referencedColumnName = "ID")
@@ -48,11 +53,12 @@ public class Answer {
 		super();
 	}
 
-	public Answer(String iD, String ascontent, Date astime, Question qID) {
+	public Answer(String iD, String ascontent, Date astime, UserInfo asuser, Question qID) {
 		super();
 		ID = iD;
 		this.ascontent = ascontent;
 		this.astime = astime;
+		this.asuser = asuser;
 		QID = qID;
 	}
 
@@ -80,6 +86,14 @@ public class Answer {
 		this.astime = astime;
 	}
 
+	public UserInfo getAsuser() {
+		return asuser;
+	}
+
+	public void setAsuser(UserInfo asuser) {
+		this.asuser = asuser;
+	}
+
 	public Question getQID() {
 		return QID;
 	}
@@ -90,7 +104,8 @@ public class Answer {
 
 	@Override
 	public String toString() {
-		return "Answer [ID=" + ID + ", ascontent=" + ascontent + ", astime=" + astime + ", QID=" + QID + "]";
+		return "Answer [ID=" + ID + ", ascontent=" + ascontent + ", astime=" + astime + ", asuser=" + asuser + ", QID="
+				+ QID + "]";
 	}
 
 

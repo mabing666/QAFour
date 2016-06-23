@@ -47,7 +47,7 @@
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager"
 		proxy-target-class="true" />
-	<bean id="userDao" class="com.four.qa.daoImpl.UserDao">
+	<bean id="userDao" class="com.four.qa.daoImpl.UserInfoDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="questionDao" class="com.four.qa.daoImpl.QuestionDao">

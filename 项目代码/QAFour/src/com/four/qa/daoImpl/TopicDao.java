@@ -25,7 +25,38 @@ public class TopicDao extends BaseDao<Topic, String> {
 	 * @return List
 	 */
 	public List<Topic> getByFID(String fid) {
-		return super.findBy("ID", true, Restrictions
-				.sqlRestriction("id in (select sid from fstopic where fid = '" + fid + "')"));
+		return super.findBy("ID", true,
+				Restrictions.sqlRestriction("id in (select sid from fstopic where fid = '" + fid + "')"));
+	}
+
+	/**
+	 * 通过uid获得话题
+	 * 
+	 * @time 2016/6/22 14:18
+	 * @param uid
+	 * @return List
+	 */
+	public List<Topic> getByUID(String uid) {
+		return super.findBy("ID", true,
+				Restrictions.sqlRestriction("id in (select TPID from utp where uid = '" + uid + "')"));
+	}
+
+	/**
+	 * 通过sid获得话题
+	 * 
+	 * @time 2016/6/22 15:04
+	 * @param sid
+	 * @return Topic
+	 */
+	public Topic getBySID(String sid) {
+		try {
+			List<Topic> list = super.findBy("ID", true,
+					Restrictions.sqlRestriction("id in (select fid from fstopic where sid = '" + sid + "')"));
+			return list == null ? null : list.get(0);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
