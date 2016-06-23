@@ -93,4 +93,5 @@ public class Answer {
 		return "Answer [ID=" + ID + ", ascontent=" + ascontent + ", astime=" + astime + ", QID=" + QID + "]";
 	}
 
+
 }
