@@ -27,26 +27,26 @@ public class TopicService implements ITopicService {
 	}
 
 	public List<Topic> getAllRootTopic() {
-		return topicDao.getByFID("1");
+		return topicDao.getByFID(1);
 	}
 
-	public List<Topic> getAllRootTopic(String tpid) {
+	public List<Topic> getAllRootTopic(int tpid) {
 		return topicDao.getByFID(tpid);
 	}
 
-	public Topic getTopic(String tpid) {
+	public Topic getTopic(int tpid) {
 		return topicDao.get(tpid);
 	}
 
-	public List<Topic> getUserFavourite(String uid) {
+	public List<Topic> getUserFavourite(int uid) {
 		return topicDao.getByUID(uid);
 	}
 
-	public Topic getFatherTopic(String sid) {
+	public Topic getFatherTopic(int sid) {
 		return topicDao.getBySID(sid);
 	}
 
-	public List<Topic> getSonTopic(String fid) {
+	public List<Topic> getSonTopic(int fid) {
 		return topicDao.getByFID(fid);
 	}
 

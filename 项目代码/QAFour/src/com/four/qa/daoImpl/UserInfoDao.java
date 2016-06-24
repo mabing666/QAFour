@@ -11,7 +11,7 @@ import com.four.qa.model.UserInfo;
  * @author Tiaoyu
  * @date 2016/6/17
  */
-public class UserInfoDao extends BaseDao<UserInfo, String> {
+public class UserInfoDao extends BaseDao<UserInfo, Integer> {
 
 	public UserInfoDao() {
 		super(UserInfo.class);

@@ -30,50 +30,55 @@ public class QTP {
 	@Id
 	@GeneratedValue(generator = "MODEL_TQ_ID_GENERATOR")
 	@GenericGenerator(name = "MODEL_TQ_ID_GENERATOR", strategy = "native")
-	private String ID;
+	private int ID;
 
 	@ManyToOne(targetEntity = Topic.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "TPID", referencedColumnName = "ID", nullable = false)
-	private String TPID;
+	private int TPID;
 
 	@ManyToOne(targetEntity = Question.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "QID", referencedColumnName = "ID", nullable = false)
-	private String QID;
+	private int QID;
 
 	public QTP() {
 	}
 
-	public QTP(String iD, String tPID, String qID) {
+	public QTP(int iD, int tPID, int qID) {
 		super();
 		ID = iD;
 		TPID = tPID;
 		QID = qID;
 	}
 
-	public String getID() {
+	public int getID() {
 		return ID;
 	}
 
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 
-	public String getTPID() {
+	public int getTPID() {
 		return TPID;
 	}
 
-	public void setTPID(String tPID) {
+	public void setTPID(int tPID) {
 		TPID = tPID;
 	}
 
-	public String getQID() {
+	public int getQID() {
 		return QID;
 	}
 
-	public void setQID(String qID) {
+	public void setQID(int qID) {
 		QID = qID;
+	}
+
+	@Override
+	public String toString() {
+		return "QTP [ID=" + ID + ", TPID=" + TPID + ", QID=" + QID + "]";
 	}
 
 }

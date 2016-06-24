@@ -52,7 +52,7 @@ public interface ITopicService {
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/getAllRootTopic/{tpid}")
-	public List<Topic> getAllRootTopic(@PathParam("tpid") String tpid);
+	public List<Topic> getAllRootTopic(@PathParam("tpid") int tpid);
 
 	/**
 	 * 获得话题信息
@@ -65,7 +65,7 @@ public interface ITopicService {
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/getTopic/{tpid}")
-	public Topic getTopic(@PathParam("tpid") String tpid);
+	public Topic getTopic(@PathParam("tpid") int tpid);
 
 	/**
 	 * 获得用户关注的话题
@@ -78,7 +78,7 @@ public interface ITopicService {
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/getUserFavourite/{uid}")
-	public List<Topic> getUserFavourite(@PathParam("uid") String uid);
+	public List<Topic> getUserFavourite(@PathParam("uid") int uid);
 
 	/**
 	 * 获得父话题列表
@@ -91,7 +91,7 @@ public interface ITopicService {
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/getFatherTopic/{sid}")
-	public Topic getFatherTopic(@PathParam("sid") String sid);
+	public Topic getFatherTopic(@PathParam("sid") int sid);
 
 	/**
 	 * 获得子话题
@@ -104,5 +104,5 @@ public interface ITopicService {
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/getSonTopic/{fid}")
-	public List<Topic> getSonTopic(@PathParam("fid") String fid);
+	public List<Topic> getSonTopic(@PathParam("fid") int fid);
 }

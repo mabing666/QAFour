@@ -30,4 +30,14 @@ public class UserService implements IUserService {
 			return null;
 		}
 	}
+
+	public UserInfo doRegister(UserInfo user) {
+		System.out.println(user);
+		
+		UserInfo u = userDao.getByName(user.getUname());
+		if(u == null){
+			userDao.save(user);
+		}
+		return user;
+	}
 }

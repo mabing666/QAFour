@@ -24,7 +24,7 @@ public class Topic {
 	@Id
 	@GeneratedValue(generator = "MODEL_TOPIC_ID_GENERATOR")
 	@GenericGenerator(name = "MODEL_TOPIC_ID_GENERATOR", strategy = "native")
-	private String ID;
+	private int ID;
 
 	@Column(name = "tpname", nullable = false)
 	private String tpname;
@@ -35,18 +35,18 @@ public class Topic {
 	public Topic() {
 	}
 
-	public Topic(String iD, String tpname, String tpdetail) {
+	public Topic(int iD, String tpname, String tpdetail) {
 		super();
 		ID = iD;
 		this.tpname = tpname;
 		this.tpdetail = tpdetail;
 	}
 
-	public String getID() {
+	public int getID() {
 		return ID;
 	}
 
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 

@@ -31,7 +31,7 @@ public class Question {
 	@Id
 	@GeneratedValue(generator = "MODEL_QUESTION_ID_GENERATOR")
 	@GenericGenerator(name = "MODEL_QUESTION_ID_GENERATOR", strategy = "native")
-	private String ID;
+	private int ID;
 
 	@Column(name = "qstitle", nullable = false)
 	private String qstitle;
@@ -50,7 +50,7 @@ public class Question {
 	public Question() {
 	}
 
-	public Question(String iD, String qstitle, String qscontent, UserInfo qsuser, Date qstime) {
+	public Question(int iD, String qstitle, String qscontent, UserInfo qsuser, Date qstime) {
 		super();
 		ID = iD;
 		this.qstitle = qstitle;
@@ -59,11 +59,11 @@ public class Question {
 		this.qstime = qstime;
 	}
 
-	public String getID() {
+	public int getID() {
 		return ID;
 	}
 
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 

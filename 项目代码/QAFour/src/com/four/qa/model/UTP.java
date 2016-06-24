@@ -30,49 +30,49 @@ public class UTP {
 	@Id
 	@GeneratedValue(generator = "MODEL_UTP_ID_GENERATOR")
 	@GenericGenerator(name = "MODEL_UTP_ID_GENERATOR", strategy = "native")
-	private String ID;
+	private int ID;
 
 	@ManyToOne(targetEntity = UserInfo.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "UID", referencedColumnName = "ID", nullable = false)
-	private String UID;
+	private int UID;
 
 	@ManyToOne(targetEntity = Topic.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "TPID", referencedColumnName = "ID", nullable = false)
-	private String TPID;
+	private int TPID;
 
 	public UTP() {
 	}
 
-	public UTP(String iD, String uID, String tPID) {
+	public UTP(int iD, int uID, int tPID) {
 		super();
 		ID = iD;
 		UID = uID;
 		TPID = tPID;
 	}
 
-	public String getID() {
+	public int getID() {
 		return ID;
 	}
 
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 
-	public String getUID() {
+	public int getUID() {
 		return UID;
 	}
 
-	public void setUID(String uID) {
+	public void setUID(int uID) {
 		UID = uID;
 	}
 
-	public String getTPID() {
+	public int getTPID() {
 		return TPID;
 	}
 
-	public void setTPID(String tPID) {
+	public void setTPID(int tPID) {
 		TPID = tPID;
 	}
 
