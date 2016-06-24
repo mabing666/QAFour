@@ -11,7 +11,7 @@ import com.four.qa.model.UserInfo;
  * @author Tiaoyu
  * @date 2016/6/17
  */
-public class UserInfoDao extends BaseDao<UserInfo, String> {
+public class UserInfoDao extends BaseDao<UserInfo, Integer> {
 
 	public UserInfoDao() {
 		super(UserInfo.class);
@@ -19,6 +19,7 @@ public class UserInfoDao extends BaseDao<UserInfo, String> {
 
 	/**
 	 * 通过昵称获得用户信息
+	 * 
 	 * @time 2016/6/22 14:27
 	 * @param uname
 	 * @return UserInfo
@@ -28,8 +29,13 @@ public class UserInfoDao extends BaseDao<UserInfo, String> {
 		if (ulist == null) {
 			return null;
 		} else {
-			System.out.println(ulist);
-			return ulist.get(0);
+			try {
+				System.out.println(ulist);
+				return ulist.get(0);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
 		}
 	}
 }

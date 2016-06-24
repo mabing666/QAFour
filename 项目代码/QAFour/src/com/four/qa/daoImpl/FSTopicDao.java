@@ -7,6 +7,6 @@ import com.four.qa.model.FSTopic;
  * @author Tiaoyu
  * @date 2016/6/17
  */
-public class FSTopicDao extends BaseDao<FSTopic, String> {
+public class FSTopicDao extends BaseDao<FSTopic, Integer> {
 
 }
