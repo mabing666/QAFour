@@ -35,17 +35,17 @@ public class QTP {
 	@ManyToOne(targetEntity = Topic.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "TPID", referencedColumnName = "ID", nullable = false)
-	private int TPID;
+	private Topic TPID;
 
 	@ManyToOne(targetEntity = Question.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "QID", referencedColumnName = "ID", nullable = false)
-	private int QID;
+	private Question QID;
 
 	public QTP() {
 	}
 
-	public QTP(int iD, int tPID, int qID) {
+	public QTP(int iD, Topic tPID, Question qID) {
 		super();
 		ID = iD;
 		TPID = tPID;
@@ -60,19 +60,19 @@ public class QTP {
 		ID = iD;
 	}
 
-	public int getTPID() {
+	public Topic getTPID() {
 		return TPID;
 	}
 
-	public void setTPID(int tPID) {
+	public void setTPID(Topic tPID) {
 		TPID = tPID;
 	}
 
-	public int getQID() {
+	public Question getQID() {
 		return QID;
 	}
 
-	public void setQID(int qID) {
+	public void setQID(Question qID) {
 		QID = qID;
 	}
 

@@ -35,17 +35,17 @@ public class UTP {
 	@ManyToOne(targetEntity = UserInfo.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "UID", referencedColumnName = "ID", nullable = false)
-	private int UID;
+	private UserInfo UID;
 
 	@ManyToOne(targetEntity = Topic.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "TPID", referencedColumnName = "ID", nullable = false)
-	private int TPID;
+	private Topic TPID;
 
 	public UTP() {
 	}
 
-	public UTP(int iD, int uID, int tPID) {
+	public UTP(int iD, UserInfo uID, Topic tPID) {
 		super();
 		ID = iD;
 		UID = uID;
@@ -60,19 +60,19 @@ public class UTP {
 		ID = iD;
 	}
 
-	public int getUID() {
+	public UserInfo getUID() {
 		return UID;
 	}
 
-	public void setUID(int uID) {
+	public void setUID(UserInfo uID) {
 		UID = uID;
 	}
 
-	public int getTPID() {
+	public Topic getTPID() {
 		return TPID;
 	}
 
-	public void setTPID(int tPID) {
+	public void setTPID(Topic tPID) {
 		TPID = tPID;
 	}
 

@@ -19,6 +19,7 @@ public class UserInfoDao extends BaseDao<UserInfo, Integer> {
 
 	/**
 	 * 通过昵称获得用户信息
+	 * 
 	 * @time 2016/6/22 14:27
 	 * @param uname
 	 * @return UserInfo
@@ -28,8 +29,13 @@ public class UserInfoDao extends BaseDao<UserInfo, Integer> {
 		if (ulist == null) {
 			return null;
 		} else {
-			System.out.println(ulist);
-			return ulist.get(0);
+			try {
+				System.out.println(ulist);
+				return ulist.get(0);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
 		}
 	}
 }

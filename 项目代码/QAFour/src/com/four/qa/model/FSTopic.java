@@ -35,6 +35,7 @@ public class FSTopic {
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "SID", referencedColumnName = "ID", nullable = false)
 	private Topic SID;
+
 	@ManyToOne(targetEntity = Topic.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "FID", referencedColumnName = "ID", nullable = false)

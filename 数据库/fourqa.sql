@@ -4,48 +4,37 @@ Navicat MySQL Data Transfer
 Source Server         : tiaoyu
 Source Server Version : 50626
 Source Host           : 127.0.0.1:3306
-Source Database       : fourqa
+Source Database       : fourqaa
 
 Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-06-23 18:31:14
+Date: 2016-06-24 09:59:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for forcus
+-- Table structure for answer
 -- ----------------------------
-DROP TABLE IF EXISTS `forcus`;
-CREATE TABLE `forcus` (
-  `ID` char(255) NOT NULL,
-  `UID` int(11) DEFAULT NULL,
-  `QID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of forcus
--- ----------------------------
-
--- ----------------------------
--- Table structure for four
--- ----------------------------
-DROP TABLE IF EXISTS `four`;
-CREATE TABLE `four` (
+DROP TABLE IF EXISTS `answer`;
+CREATE TABLE `answer` (
   `ID` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `detail` varchar(255) DEFAULT NULL,
-  `password` varchar(64) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  `ascontent` varchar(255) DEFAULT NULL,
+  `astime` datetime DEFAULT NULL,
+  `asuser` int(11) DEFAULT NULL,
+  `QID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FKAnswerUID` (`asuser`),
+  KEY `FKAnswerQID` (`QID`),
+  CONSTRAINT `FKAnswerQID` FOREIGN KEY (`QID`) REFERENCES `question` (`ID`),
+  CONSTRAINT `FKAnswerUID` FOREIGN KEY (`asuser`) REFERENCES `userinfo` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of four
+-- Records of answer
 -- ----------------------------
-INSERT INTO `four` VALUES ('1', '陶肖宇', '中央最高审判长', 'include');
 
 -- ----------------------------
 -- Table structure for fsanswer
@@ -84,24 +73,57 @@ CREATE TABLE `fstopic` (
 -- ----------------------------
 -- Records of fstopic
 -- ----------------------------
-INSERT INTO `fstopic` VALUES ('1', '1', '2');
-INSERT INTO `fstopic` VALUES ('10', '3', '11');
-INSERT INTO `fstopic` VALUES ('11', '4', '12');
-INSERT INTO `fstopic` VALUES ('12', '4', '13');
-INSERT INTO `fstopic` VALUES ('13', '5', '14');
-INSERT INTO `fstopic` VALUES ('14', '5', '15');
-INSERT INTO `fstopic` VALUES ('15', '6', '16');
-INSERT INTO `fstopic` VALUES ('16', '7', '17');
-INSERT INTO `fstopic` VALUES ('17', '7', '18');
-INSERT INTO `fstopic` VALUES ('18', '8', '19');
-INSERT INTO `fstopic` VALUES ('2', '1', '3');
-INSERT INTO `fstopic` VALUES ('3', '1', '4');
-INSERT INTO `fstopic` VALUES ('4', '1', '5');
-INSERT INTO `fstopic` VALUES ('5', '1', '6');
-INSERT INTO `fstopic` VALUES ('6', '1', '7');
-INSERT INTO `fstopic` VALUES ('7', '2', '8');
-INSERT INTO `fstopic` VALUES ('8', '2', '9');
-INSERT INTO `fstopic` VALUES ('9', '3', '10');
+INSERT INTO `fstopic` VALUES ('3', '6', '16');
+INSERT INTO `fstopic` VALUES ('4', '7', '6');
+INSERT INTO `fstopic` VALUES ('5', '7', '8');
+INSERT INTO `fstopic` VALUES ('6', '6', '19');
+INSERT INTO `fstopic` VALUES ('7', '9', '11');
+INSERT INTO `fstopic` VALUES ('8', '9', '12');
+INSERT INTO `fstopic` VALUES ('9', '9', '13');
+INSERT INTO `fstopic` VALUES ('11', '16', '18');
+INSERT INTO `fstopic` VALUES ('12', '16', '19');
+INSERT INTO `fstopic` VALUES ('13', '9', '14');
+INSERT INTO `fstopic` VALUES ('14', '50', '7');
+INSERT INTO `fstopic` VALUES ('15', '49', '50');
+INSERT INTO `fstopic` VALUES ('16', '49', '51');
+INSERT INTO `fstopic` VALUES ('17', '49', '52');
+INSERT INTO `fstopic` VALUES ('18', '1', '21');
+INSERT INTO `fstopic` VALUES ('19', '1', '2');
+INSERT INTO `fstopic` VALUES ('20', '1', '3');
+INSERT INTO `fstopic` VALUES ('21', '1', '33');
+INSERT INTO `fstopic` VALUES ('22', '1', '30');
+INSERT INTO `fstopic` VALUES ('23', '21', '22');
+INSERT INTO `fstopic` VALUES ('24', '21', '30');
+INSERT INTO `fstopic` VALUES ('25', '1', '41');
+INSERT INTO `fstopic` VALUES ('26', '22', '26');
+INSERT INTO `fstopic` VALUES ('27', '22', '27');
+INSERT INTO `fstopic` VALUES ('28', '26', '28');
+INSERT INTO `fstopic` VALUES ('29', '26', '29');
+INSERT INTO `fstopic` VALUES ('30', '22', '25');
+INSERT INTO `fstopic` VALUES ('31', '29', '23');
+INSERT INTO `fstopic` VALUES ('32', '29', '24');
+INSERT INTO `fstopic` VALUES ('33', '30', '31');
+INSERT INTO `fstopic` VALUES ('34', '30', '32');
+INSERT INTO `fstopic` VALUES ('35', '31', '34');
+INSERT INTO `fstopic` VALUES ('36', '31', '35');
+INSERT INTO `fstopic` VALUES ('37', '31', '36');
+INSERT INTO `fstopic` VALUES ('38', '1', '37');
+INSERT INTO `fstopic` VALUES ('39', '37', '33');
+INSERT INTO `fstopic` VALUES ('40', '37', '38');
+INSERT INTO `fstopic` VALUES ('41', '37', '39');
+INSERT INTO `fstopic` VALUES ('42', '37', '40');
+INSERT INTO `fstopic` VALUES ('43', '41', '42');
+INSERT INTO `fstopic` VALUES ('44', '41', '45');
+INSERT INTO `fstopic` VALUES ('45', '42', '43');
+INSERT INTO `fstopic` VALUES ('46', '42', '44');
+INSERT INTO `fstopic` VALUES ('47', '45', '46');
+INSERT INTO `fstopic` VALUES ('48', '45', '47');
+INSERT INTO `fstopic` VALUES ('49', '45', '48');
+INSERT INTO `fstopic` VALUES ('50', '3', '4');
+INSERT INTO `fstopic` VALUES ('51', '3', '5');
+INSERT INTO `fstopic` VALUES ('52', '30', '37');
+INSERT INTO `fstopic` VALUES ('53', '27', '31');
+INSERT INTO `fstopic` VALUES ('54', '27', '32');
 
 -- ----------------------------
 -- Table structure for qtp
@@ -132,10 +154,7 @@ CREATE TABLE `question` (
   `qscontent` varchar(255) DEFAULT NULL,
   `qstime` datetime DEFAULT NULL,
   `qsuser` int(11) DEFAULT NULL,
-  `qsfocus` int(11) DEFAULT '0',
-  PRIMARY KEY (`ID`),
-  KEY `FKQuestionQuser` (`qsuser`),
-  CONSTRAINT `FKQuestionQuser` FOREIGN KEY (`qsuser`) REFERENCES `userinfo` (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -143,18 +162,70 @@ CREATE TABLE `question` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for tag
+-- Table structure for topic
 -- ----------------------------
-DROP TABLE IF EXISTS `tag`;
-CREATE TABLE `tag` (
+DROP TABLE IF EXISTS `topic`;
+CREATE TABLE `topic` (
   `ID` int(11) NOT NULL,
-  `tgname` varchar(255) DEFAULT NULL,
+  `tpname` varchar(255) DEFAULT NULL,
+  `tpdetail` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of tag
+-- Records of topic
 -- ----------------------------
+INSERT INTO `topic` VALUES ('2', '吃喝玩乐', null);
+INSERT INTO `topic` VALUES ('3', '旅行', '最美的景色永远在远方，再远的脚步也走不出心房');
+INSERT INTO `topic` VALUES ('4', '旅行计划', null);
+INSERT INTO `topic` VALUES ('5', '旅行攻略', null);
+INSERT INTO `topic` VALUES ('6', '软件工程', null);
+INSERT INTO `topic` VALUES ('7', '计算机科学', null);
+INSERT INTO `topic` VALUES ('8', '编译原理', null);
+INSERT INTO `topic` VALUES ('9', '软件开发', null);
+INSERT INTO `topic` VALUES ('10', '软件测试', null);
+INSERT INTO `topic` VALUES ('11', ' 前端开发', null);
+INSERT INTO `topic` VALUES ('12', 'LINUX开发', null);
+INSERT INTO `topic` VALUES ('13', 'IOS开发', null);
+INSERT INTO `topic` VALUES ('14', 'Andriod开发', null);
+INSERT INTO `topic` VALUES ('15', '软件测试', null);
+INSERT INTO `topic` VALUES ('16', '软件设计', null);
+INSERT INTO `topic` VALUES ('17', '接口设计', null);
+INSERT INTO `topic` VALUES ('18', '面向对象设计', null);
+INSERT INTO `topic` VALUES ('19', 'ＵＭＬ', null);
+INSERT INTO `topic` VALUES ('20', '软件测试', null);
+INSERT INTO `topic` VALUES ('21', '娱乐', '　');
+INSERT INTO `topic` VALUES ('22', '游戏', null);
+INSERT INTO `topic` VALUES ('23', '单机游戏', null);
+INSERT INTO `topic` VALUES ('24', '网络游戏', null);
+INSERT INTO `topic` VALUES ('25', '游戏竞技', null);
+INSERT INTO `topic` VALUES ('26', '电子游戏', null);
+INSERT INTO `topic` VALUES ('27', '运动游戏', null);
+INSERT INTO `topic` VALUES ('28', '手机游戏', null);
+INSERT INTO `topic` VALUES ('29', '电脑游戏', null);
+INSERT INTO `topic` VALUES ('30', '运动', null);
+INSERT INTO `topic` VALUES ('31', '足球', null);
+INSERT INTO `topic` VALUES ('32', '篮球', null);
+INSERT INTO `topic` VALUES ('33', '健身', null);
+INSERT INTO `topic` VALUES ('34', '足球赛事', null);
+INSERT INTO `topic` VALUES ('35', '足球俱乐部', null);
+INSERT INTO `topic` VALUES ('36', '足球规则', null);
+INSERT INTO `topic` VALUES ('37', '健康', null);
+INSERT INTO `topic` VALUES ('38', '身体健康', null);
+INSERT INTO `topic` VALUES ('39', '心理健康', null);
+INSERT INTO `topic` VALUES ('40', '饮食健康', null);
+INSERT INTO `topic` VALUES ('41', '文化', null);
+INSERT INTO `topic` VALUES ('42', '动漫', null);
+INSERT INTO `topic` VALUES ('43', '日本动漫', null);
+INSERT INTO `topic` VALUES ('44', '国漫', null);
+INSERT INTO `topic` VALUES ('45', '教育', null);
+INSERT INTO `topic` VALUES ('46', '大学', null);
+INSERT INTO `topic` VALUES ('47', '考研', null);
+INSERT INTO `topic` VALUES ('48', '儿童教育', null);
+INSERT INTO `topic` VALUES ('49', '科技', null);
+INSERT INTO `topic` VALUES ('50', '现代科学技术', null);
+INSERT INTO `topic` VALUES ('51', '黑科技', null);
+INSERT INTO `topic` VALUES ('52', '生物科技', null);
 
 -- ----------------------------
 -- Table structure for userinfo
@@ -171,14 +242,13 @@ CREATE TABLE `userinfo` (
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
-INSERT INTO `userinfo` VALUES ('1', 'tiaoyu', 'include', '中央最高审判长');
 
 -- ----------------------------
 -- Table structure for utp
 -- ----------------------------
 DROP TABLE IF EXISTS `utp`;
 CREATE TABLE `utp` (
-  `ID` char(255) NOT NULL,
+  `ID` int(11) NOT NULL,
   `TPID` int(11) DEFAULT NULL,
   `UID` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
@@ -191,7 +261,3 @@ CREATE TABLE `utp` (
 -- ----------------------------
 -- Records of utp
 -- ----------------------------
-INSERT INTO `utp` VALUES ('1', '10', '1');
-INSERT INTO `utp` VALUES ('2', '11', '1');
-INSERT INTO `utp` VALUES ('3', '17', '1');
-INSERT INTO `utp` VALUES ('4', '18', '1');
