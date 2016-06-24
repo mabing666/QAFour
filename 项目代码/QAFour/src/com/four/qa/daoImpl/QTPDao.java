@@ -8,6 +8,6 @@ import com.four.qa.model.QTP;
  * @author Tiaoyu
  * @date 2016/6/20
  */
-public class TQDao extends BaseDao<QTP, String>{
+public class QTPDao extends BaseDao<QTP, Integer>{
 	
 }

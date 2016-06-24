@@ -29,12 +29,13 @@ public class FSTopic {
 	@Id
 	@GeneratedValue(generator = "MODEL_FSTOPIC_ID_GENERATOR")
 	@GenericGenerator(name = "MODEL_FSTOPIC_ID_GENERATOR", strategy = "native")
-	private String ID;
+	private int ID;
 
 	@ManyToOne(targetEntity = Topic.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "SID", referencedColumnName = "ID", nullable = false)
 	private Topic SID;
+
 	@ManyToOne(targetEntity = Topic.class, fetch = FetchType.LAZY)
 	@Cascade(CascadeType.LOCK)
 	@JoinColumn(name = "FID", referencedColumnName = "ID", nullable = false)
@@ -43,18 +44,18 @@ public class FSTopic {
 	public FSTopic() {
 	}
 
-	public FSTopic(String iD, Topic sID, Topic fID) {
+	public FSTopic(int iD, Topic sID, Topic fID) {
 		super();
 		ID = iD;
 		SID = sID;
 		FID = fID;
 	}
 
-	public String getID() {
+	public int getID() {
 		return ID;
 	}
 
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 

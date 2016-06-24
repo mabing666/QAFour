@@ -11,7 +11,7 @@ import com.four.qa.model.Topic;
  * @author Tiaoyu
  * @date 2016/6/17
  */
-public class TopicDao extends BaseDao<Topic, String> {
+public class TopicDao extends BaseDao<Topic, Integer> {
 
 	public TopicDao() {
 		super(Topic.class);
@@ -24,7 +24,7 @@ public class TopicDao extends BaseDao<Topic, String> {
 	 * @param fid
 	 * @return List
 	 */
-	public List<Topic> getByFID(String fid) {
+	public List<Topic> getByFID(int fid) {
 		return super.findBy("ID", true,
 				Restrictions.sqlRestriction("id in (select sid from fstopic where fid = '" + fid + "')"));
 	}
@@ -36,7 +36,7 @@ public class TopicDao extends BaseDao<Topic, String> {
 	 * @param uid
 	 * @return List
 	 */
-	public List<Topic> getByUID(String uid) {
+	public List<Topic> getByUID(int uid) {
 		return super.findBy("ID", true,
 				Restrictions.sqlRestriction("id in (select TPID from utp where uid = '" + uid + "')"));
 	}
@@ -48,7 +48,7 @@ public class TopicDao extends BaseDao<Topic, String> {
 	 * @param sid
 	 * @return Topic
 	 */
-	public Topic getBySID(String sid) {
+	public Topic getBySID(int sid) {
 		try {
 			List<Topic> list = super.findBy("ID", true,
 					Restrictions.sqlRestriction("id in (select fid from fstopic where sid = '" + sid + "')"));

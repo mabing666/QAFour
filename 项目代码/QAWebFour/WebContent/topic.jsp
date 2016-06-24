@@ -50,7 +50,14 @@
 </style>
 
 <body>
-	<div class="navi"></div>
+	<div class="navi">
+		<ul>
+			<li><a>提问</a></li>
+			<li><a>条鱼</a></li>
+			<li><a>c</a></li>
+			<li><a>d</a></li>
+		</ul>
+	</div>
 	<div class="ftopics" id="ftopics"></div>
 	<div class="stopics" id="stopics"></div>
 </body>

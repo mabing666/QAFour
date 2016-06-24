@@ -11,4 +11,22 @@ body {
 	height: 45px;
 	background: #0767c8;
 }
-</style>
+
+.navi ul {
+	list-style: none;
+	margin-top: 15px;
+	float: right;
+}
+
+.navi ul li {
+	display: inline-block;
+}
+
+.navi ul li a {
+	color: white;
+	border: solid 1px white;
+	padding: 4px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 6px;
+}

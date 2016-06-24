@@ -31,10 +31,10 @@ public class Answer {
 	@Id
 	@GeneratedValue(generator = "MODEL_ANSWER_ID_GENERATOR")
 	@GenericGenerator(name = "MODEL_ANSWER_ID_GENERATOR", strategy = "native")
-	private String ID;
+	private int ID;
 
 	@Column(name = "ascontent", nullable = false)
-	private String ascontent;
+	private int ascontent;
 
 	@Column(name = "astime", nullable = false)
 	private Date astime;
@@ -53,7 +53,7 @@ public class Answer {
 		super();
 	}
 
-	public Answer(String iD, String ascontent, Date astime, UserInfo asuser, Question qID) {
+	public Answer(int iD, int ascontent, Date astime, UserInfo asuser, Question qID) {
 		super();
 		ID = iD;
 		this.ascontent = ascontent;
@@ -62,19 +62,19 @@ public class Answer {
 		QID = qID;
 	}
 
-	public String getID() {
+	public int getID() {
 		return ID;
 	}
 
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 
-	public String getAscontent() {
+	public int getAscontent() {
 		return ascontent;
 	}
 
-	public void setAscontent(String ascontent) {
+	public void setAscontent(int ascontent) {
 		this.ascontent = ascontent;
 	}
 
@@ -107,6 +107,5 @@ public class Answer {
 		return "Answer [ID=" + ID + ", ascontent=" + ascontent + ", astime=" + astime + ", asuser=" + asuser + ", QID="
 				+ QID + "]";
 	}
-
 
 }
