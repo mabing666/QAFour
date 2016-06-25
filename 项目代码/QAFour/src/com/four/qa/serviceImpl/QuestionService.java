@@ -22,8 +22,12 @@ public class QuestionService implements IQuestionService {
 		this.questionDao = questionDao;
 	}
 
-	public List<Question> getListByTPID(String tpid) {
-		return questionDao.getAll();
+	public List<Question> getListByTPID(int tpid) {
+		return questionDao.getByTPID(tpid);
+	}
+
+	public Question createQuestion(Question q) {
+		return questionDao.createQuestion(q);
 	}
 
 }
