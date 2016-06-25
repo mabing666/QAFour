@@ -40,8 +40,7 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	 * @return
 	 */
 	public List<Answer> getByQID(int qid) {
-		return super.findBy("ID", true,
-				Restrictions.sqlRestriction("id in (select id from answer where qid = '" + qid + "')"));
+		return super.findBy("ID", true, Restrictions.sqlRestriction("QID = '" + qid + "'"));
 	}
 
 	/**
