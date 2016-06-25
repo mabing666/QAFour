@@ -156,28 +156,21 @@
 					class="easyui-linkbutton">时间排序</a>
 			</div>
 			<div class="clear" id="clear"></div>
-			
 			<div class="question" id="question"></div>
 		</div>
 		<div class="expend">
 
 			<div class="detail" id="detail"></div>
 			<div class="clear" id="clear"></div>
-			
 			<div class="tpfather" id="tpfather"></div>
 			<div class="clear" id="clear"></div>
-			
 			<div class="tpson" id="tpson"></div>
 			<div class="clear" id="clear"></div>
-			
 
 		</div>
 	</div>
 </body>
 <script>
-	/*
-		获得用户关注的话题
-	*/
 	$
 			.ajax({
 				type : "GET",
@@ -197,9 +190,7 @@
 					$("#favourite").html(htm)
 				}
 			});
-	/*
-		获得当前话题具体信息
-	*/
+
 	$.ajax({
 		type : "GET",
 		url : "http://localhost:8080/QAFour/REST/Topic/getTopic/"
@@ -216,9 +207,6 @@
 			$("#title").html("<h2>" + data.tpname + "</h2>");
 		}
 	});
-	/**
-		获得父话题
-	*/
 	$
 			.ajax({
 				type : "GET",
@@ -237,10 +225,6 @@
 					$("#tpfather").html(htm);
 				}
 			});
-	
-	/*
-		获得子话题
-	*/
 	$
 			.ajax({
 				type : "GET",
@@ -264,9 +248,6 @@
 					$("#tpson").html(htm);
 				}
 			});
-	/**
-		问题列表（时间顺序）
-	*/
 	$.ajax({
 		type : "GET",
 		url : "http://localhost:8080/QAFour/REST/Question/getListByTPID/"
@@ -278,7 +259,7 @@
 			var htm = "";
 			/* alert(data.length) */
 			for (var i = 0; i < data.length; ++i) {
-				htm += "<br/><ul><li><a class='qstitle'>" + data[i].qstitle
+				htm += "<ul><li><a class='qstitle'>" + data[i].qstitle
 						+ "</a></li>" + "<li><div class='qsuser'>"
 						+ data[i].qsuser.uname + ", " + data[i].qsuser.ucontent
 						+ "</div><div class='qstime'>"+data[i].qstime+"</div></li><br/>" + "<li><div class='qscontent'>"

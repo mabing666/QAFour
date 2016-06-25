@@ -2,16 +2,16 @@ package com.four.qa.model;
 
 import java.util.Date;
 
+
 /**
  * 回答和回答父ID的重构类
- * 
  * @date 2016/6/25
  * @author Tiaoyu
  */
 public class AAnswer {
 	private int ID;
 
-	private String ascontent;
+	private int ascontent;
 
 	private Date astime;
 
@@ -24,7 +24,7 @@ public class AAnswer {
 	public AAnswer() {
 	}
 
-	public AAnswer(int iD, String ascontent, Date astime, int asuser, int qID, int fID) {
+	public AAnswer(int iD, int ascontent, Date astime, int asuser, int qID, int fID) {
 		super();
 		ID = iD;
 		this.ascontent = ascontent;
@@ -42,11 +42,11 @@ public class AAnswer {
 		ID = iD;
 	}
 
-	public String getAscontent() {
+	public int getAscontent() {
 		return ascontent;
 	}
 
-	public void setAscontent(String ascontent) {
+	public void setAscontent(int ascontent) {
 		this.ascontent = ascontent;
 	}
 

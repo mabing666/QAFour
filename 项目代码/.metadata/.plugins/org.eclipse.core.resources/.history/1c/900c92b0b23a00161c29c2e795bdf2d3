@@ -80,7 +80,7 @@
 			<!-- 配置AnswerService中的属性dao -->
 			<bean class="com.four.qa.serviceImpl.AnswerService">
 				<property name="answerDao" ref="answerDao"></property>
-				<property name="userDao" ref="userDao"></property>
+				<property name="userInfoDao" ref="userDao"></property>
 				<property name="questionDao" ref="questionDao"></property>
 			</bean>
 			

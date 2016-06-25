@@ -116,28 +116,20 @@
 .question {
 	margin-top: 10px;
 	width: 600px;
-	height: auto;
+	height: 500px;
 	background-color: #FFF0F5;
 	width: 600px;
 }
 
 .question ul {
 	list-style: none;
-	margin-right: 40px;
+	margin-right:40px;
+}
+.qstitle{
+	font: 20px;
+	
 }
 
-.qstitle {
-	font-family: "微软雅黑";
-	font-size: 20px;
-}
-.qsuser{
-	margin-top: 5px;
-	font-style:italic;
-	font-family: "微软雅黑";
-	font-size: 15px;
-}
-.qscontent{
-}
 .clear {
 	clear: both;
 }
@@ -156,28 +148,22 @@
 					class="easyui-linkbutton">时间排序</a>
 			</div>
 			<div class="clear" id="clear"></div>
-			
-			<div class="question" id="question"></div>
+			<div class="question" id="question">
+			</div>
 		</div>
 		<div class="expend">
 
 			<div class="detail" id="detail"></div>
 			<div class="clear" id="clear"></div>
-			
 			<div class="tpfather" id="tpfather"></div>
 			<div class="clear" id="clear"></div>
-			
 			<div class="tpson" id="tpson"></div>
 			<div class="clear" id="clear"></div>
-			
 
 		</div>
 	</div>
 </body>
 <script>
-	/*
-		获得用户关注的话题
-	*/
 	$
 			.ajax({
 				type : "GET",
@@ -197,9 +183,7 @@
 					$("#favourite").html(htm)
 				}
 			});
-	/*
-		获得当前话题具体信息
-	*/
+
 	$.ajax({
 		type : "GET",
 		url : "http://localhost:8080/QAFour/REST/Topic/getTopic/"
@@ -216,9 +200,6 @@
 			$("#title").html("<h2>" + data.tpname + "</h2>");
 		}
 	});
-	/**
-		获得父话题
-	*/
 	$
 			.ajax({
 				type : "GET",
@@ -237,10 +218,6 @@
 					$("#tpfather").html(htm);
 				}
 			});
-	
-	/*
-		获得子话题
-	*/
 	$
 			.ajax({
 				type : "GET",
@@ -264,29 +241,28 @@
 					$("#tpson").html(htm);
 				}
 			});
-	/**
-		问题列表（时间顺序）
-	*/
-	$.ajax({
-		type : "GET",
-		url : "http://localhost:8080/QAFour/REST/Question/getListByTPID/"
-				+ GetQueryString("tpid"),
-		contentType : "application/json",
-		dataType : "json",
-		data : null,
-		success : function(data) {
-			var htm = "";
-			/* alert(data.length) */
-			for (var i = 0; i < data.length; ++i) {
-				htm += "<br/><ul><li><a class='qstitle'>" + data[i].qstitle
-						+ "</a></li>" + "<li><div class='qsuser'>"
-						+ data[i].qsuser.uname + ", " + data[i].qsuser.ucontent
-						+ "</div><div class='qstime'>"+data[i].qstime+"</div></li><br/>" + "<li><div class='qscontent'>"
-						+ data[i].qscontent + "</div></li>" + "</ul><br/>";
-			}
-			$("#question").html(htm)
-		}
-	});
+	$
+			.ajax({
+				type : "GET",
+				url : "http://localhost:8080/QAFour/REST/Question/getListByTPID/"
+						+ GetQueryString("tpid"),
+				contentType : "application/json",
+				dataType : "json",
+				data : null,
+				success : function(data) {
+					var htm = "";
+					/* alert(data.length) */
+					for (var i = 0; i < data.length; ++i) {
+						htm += "<ul><li><a id='qstitle'>" + data[i].qstitle
+								+ "</a></li>" + "<li><div id='qsuser'>"
+								+ data[i].qsuser.uname + ", "
+								+ data[i].qsuser.ucontent + "</div></li><br/>"
+								+ "<li><div id='qscontent'>"
+								+ data[i].qscontent + "</div></li>" + "</ul>";
+					}
+					$("#question").html(htm)
+				}
+			});
 	function toQuestions(id) {
 		location.href = "/QAWebFour/questions.jsp?tpid=" + id;
 	}

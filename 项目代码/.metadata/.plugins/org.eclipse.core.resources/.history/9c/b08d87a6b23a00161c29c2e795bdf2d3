@@ -31,7 +31,7 @@
 			</props>
 		</property>
 
-		<property name="packagesToScan">	
+		<property name="packagesToScan">	<!--不知道为了什么,这里必须要有 -->
 			<list>
 				<value>com.four.qa.model</value>
 				<value>com.four.qa.daoBase</value>
@@ -80,7 +80,7 @@
 			<!-- 配置AnswerService中的属性dao -->
 			<bean class="com.four.qa.serviceImpl.AnswerService">
 				<property name="answerDao" ref="answerDao"></property>
-				<property name="userDao" ref="userDao"></property>
+				<property name="userInfoDao" ref="userDao"></property>
 				<property name="questionDao" ref="questionDao"></property>
 			</bean>
 			

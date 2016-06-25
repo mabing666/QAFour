@@ -156,28 +156,21 @@
 					class="easyui-linkbutton">时间排序</a>
 			</div>
 			<div class="clear" id="clear"></div>
-			
 			<div class="question" id="question"></div>
 		</div>
 		<div class="expend">
 
 			<div class="detail" id="detail"></div>
 			<div class="clear" id="clear"></div>
-			
 			<div class="tpfather" id="tpfather"></div>
 			<div class="clear" id="clear"></div>
-			
 			<div class="tpson" id="tpson"></div>
 			<div class="clear" id="clear"></div>
-			
 
 		</div>
 	</div>
 </body>
 <script>
-	/*
-		获得用户关注的话题
-	*/
 	$
 			.ajax({
 				type : "GET",

@@ -7,6 +7,7 @@ import org.hibernate.criterion.Restrictions;
 import com.four.qa.daoBase.BaseDao;
 import com.four.qa.model.Answer;
 import com.four.qa.model.FSAnswer;
+import com.four.qa.model.Topic;
 
 /**
  * @author mabing
@@ -39,7 +40,6 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	 * @return
 	 */
 	public List<Answer> getByQID(int qid) {
-		System.out.println("this is asdao");
 		return super.findBy("ID", true, Restrictions.sqlRestriction("QID = '" + qid + "'"));
 	}
 
