@@ -20,6 +20,7 @@ public class TopicDao extends BaseDao<Topic, Integer> {
 	/**
 	 * 通过父节点获得子话题
 	 * 
+	 * @author Tiaoyu
 	 * @time 2016/6/18 16:41
 	 * @param fid
 	 * @return List
@@ -32,6 +33,7 @@ public class TopicDao extends BaseDao<Topic, Integer> {
 	/**
 	 * 通过uid获得话题
 	 * 
+	 * @author Tiaoyu
 	 * @time 2016/6/22 14:18
 	 * @param uid
 	 * @return List
@@ -44,6 +46,7 @@ public class TopicDao extends BaseDao<Topic, Integer> {
 	/**
 	 * 通过sid获得话题
 	 * 
+	 * @author Tiaoyu
 	 * @time 2016/6/22 15:04
 	 * @param sid
 	 * @return Topic

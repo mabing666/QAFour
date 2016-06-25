@@ -38,11 +38,12 @@ public class UserInfo {
 	public UserInfo() {
 	}
 
-	public UserInfo(int iD, String uname, String upwd) {
+	public UserInfo(int iD, String uname, String upwd, String ucontent) {
 		super();
 		ID = iD;
 		this.uname = uname;
 		this.upwd = upwd;
+		this.ucontent = ucontent;
 	}
 
 	public int getID() {
@@ -69,9 +70,17 @@ public class UserInfo {
 		this.upwd = upwd;
 	}
 
+	public String getUcontent() {
+		return ucontent;
+	}
+
+	public void setUcontent(String ucontent) {
+		this.ucontent = ucontent;
+	}
+
 	@Override
 	public String toString() {
-		return "User [ID=" + ID + ", uname=" + uname + ", upwd=" + upwd + "]";
+		return "UserInfo [ID=" + ID + ", uname=" + uname + ", upwd=" + upwd + ", ucontent=" + ucontent + "]";
 	}
 
 }
