@@ -11,10 +11,10 @@ import com.four.qa.daoImpl.UserInfoDao;
 import com.four.qa.model.AAnswer;
 import com.four.qa.model.Answer;
 import com.four.qa.serviceInterface.IAnswerService;
+import com.four.qa.serviceInterface.IQuestionService;
 
 /**
  * 2016-6-25
- * 
  * @author mabing
  *
  */
@@ -23,7 +23,7 @@ public class AnswerService implements IAnswerService {
 	private AnswerDao answerDao;
 	private UserInfoDao userDao;
 	private QuestionDao questionDao;
-
+	
 	public AnswerDao getAnswerDao() {
 		return answerDao;
 	}
@@ -32,11 +32,11 @@ public class AnswerService implements IAnswerService {
 		this.answerDao = answerDao;
 	}
 
-	public UserInfoDao getUserDao() {
+	public UserInfoDao getUserInfoDao() {
 		return userDao;
 	}
 
-	public void setUserDao(UserInfoDao userDao) {
+	public void setUserInfoDao(UserInfoDao userDao) {
 		this.userDao = userDao;
 	}
 
@@ -49,7 +49,6 @@ public class AnswerService implements IAnswerService {
 	}
 
 	public List<Answer> getListByQID(int qid) {
-		System.out.println("qid=" + qid);
 		return answerDao.getByQID(qid);
 	}
 
@@ -57,6 +56,7 @@ public class AnswerService implements IAnswerService {
 		return answerDao.getByFID(fid);
 	}
 
+	
 	public Answer createAnswer(Answer a) {
 		return answerDao.answerQS(a);
 	}
@@ -66,18 +66,16 @@ public class AnswerService implements IAnswerService {
 		int fid = a.getFID();
 		answer.setAscontent(a.getAscontent());
 		answer.setAstime(getCurrentDate());
-		answer.setAsuser(userDao.get(a.getAsuser()));
-		// answer.setID(a.getID());
+		answer.setAsuser(userInfoDao.get(a.getAsuser()));
+		//answer.setID(a.getID());
 		answer.setQID(questionDao.get(a.getQID()));
 		answerDao.answerAS(answer, fid);
 		return a;
 	}
-
+	
 	/**
+	 * 2016-6-25 15:54
 	 * 产生一个不带毫秒的时间
-	 * 
-	 * @author mabing
-	 * @time 2016-6-25 15:54
 	 * @return
 	 */
 	public Date getCurrentDate() {
@@ -91,5 +89,6 @@ public class AnswerService implements IAnswerService {
 		}
 		return tm;
 	}
+	
 
 }

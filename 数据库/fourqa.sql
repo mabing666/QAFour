@@ -1,22 +1,22 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
-Source Server Version : 50710
-Source Host           : localhost:3306
-Source Database       : fouqa
+Source Server         : tiaoyu
+Source Server Version : 50626
+Source Host           : 127.0.0.1:3306
+Source Database       : fourqa
 
 Target Server Type    : MYSQL
-Target Server Version : 50710
+Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-06-25 15:40:13
+Date: 2016-06-25 17:20:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `answer`
+-- Table structure for answer
 -- ----------------------------
 DROP TABLE IF EXISTS `answer`;
 CREATE TABLE `answer` (
@@ -30,7 +30,7 @@ CREATE TABLE `answer` (
   KEY `FKAnswerQID` (`QID`),
   CONSTRAINT `FKAnswerQID` FOREIGN KEY (`QID`) REFERENCES `question` (`ID`),
   CONSTRAINT `FKAnswerUID` FOREIGN KEY (`asuser`) REFERENCES `userinfo` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of answer
@@ -70,9 +70,10 @@ INSERT INTO `answer` VALUES ('32', '作者：可乐加冰\n链接：https://www.
 INSERT INTO `answer` VALUES ('33', '1.脱欧不是立即生效，要等到2018年。2.球员的现有合同依然有效，合同到期才要重新考虑劳工证的问题。3.即便不在欧盟，英国球员仍然很可能算作“欧盟球员”，参考俄罗斯和北欧某国家（具体哪个忘记了）。由1,2，劳工证的问题有充分的时间解决，对英国的外籍球员，影响不大，但可能对年轻球员有一定影响。由3，对在海外效力的英国球员，如贝尔，几乎不会产生影响。\n\n作者：匿名用户\n链接：https://www.zhihu.com/question/47585476/answer/107636542\n来源：知乎\n著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。', '2016-06-24 18:32:49', '4', '15');
 INSERT INTO `answer` VALUES ('34', '作者：许嘉明\n链接：https://www.zhihu.com/question/47644159/answer/107466258\n来源：知乎\n著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。\n\n首先，请明确球员身价和转会价格是两个含义，身价 4000w 的球员的球员可能 8000w 转会，也可能 2000w 转会。其次，通货膨胀也有两个方面的原因：一是足球商业化的完善，二是货币本身的膨胀球员转会价格的影响因素包括：实力，毫无疑问这是最重要的，实力体现在身价上，这个价格有直接参考，德国的转会市场 European leagues and cup competitions潜力，年龄是重要参考因素，马夏尔为什么能溢价这么多？瓦尔迪却抬不了价？稀缺度，价格是供需关系影响产生的，在如今好中锋稀缺的时代，中锋的转会价格会高于身价，例子：马丁内斯合同，合同剩余期是一个重要的标准，例子：克罗斯商业价值，这个其实除了某些特殊球星，其实影响真的不大，例子：飞鞋门的贝克汉姆到了计算时间部分：先取一号人物：C罗，几个关键数据如下：C罗最巅峰最值钱的一个赛季 09-10 ，身价 6000w 欧元（转会价格 9500w 欧元，溢价 1.5 倍）C罗这个赛季，有一定的滑坡，身价 1.1亿 欧元，个人判断：如果把 C罗放回到 09-10，身价应该是 5000w 欧元左右，把当时的C罗放今天大约是 6000/5000 * 1.1 = 1.32 亿欧元。取二号人物：罗纳尔迪尼奥，关键数据：只有一个，05-06赛季，小罗最颠覆的第二年，身价 5000w 欧元个人判断：1. 颠覆小罗和C罗的身价差不多，所以这个时候的 5000w 欧元应该和 09-10 的 6000w 欧元是差不多的。2. 颠覆时期小罗、齐达内、罗纳尔多、贝克汉姆的身价，应该只有小贝稍微偏低，但是加上商业价值也所差无几。所以我认为结论是：这四个球星颠覆时刻的身价，都在 1.2 亿以上，1.2 亿也是现在梅西的身价；至于实际转会，只有齐达内是颠覆时刻正常合同的转会，放在今天会是 1.5 亿以上，其他几个人都受到了阶段、合同、俱乐部矛盾（三个球员都有）之类因素的影响降低了转会身价，放在今天应该是 6000 ~ 8000w 左右。如有 BUG，欢迎指正。', '2016-06-24 18:35:45', '8', '13');
 INSERT INTO `answer` VALUES ('35', '作者：罗睺\n链接：https://www.zhihu.com/question/47644159/answer/107215036\n来源：知乎\n著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。\n\n以下答案纯属个人意淫，求各路大神轻喷。通货膨胀有两波，按标志事件来划分，阿布收购切尔西是第一波，曼城和大巴黎是第二波。从历史规律来看，标志事件发生两年后球市才会形成全面的通货膨胀。所以c罗和卡卡虽然在曼城易主一年后才转会皇马，但他们的转会费仍应视为切尔西引起的第一波通货膨胀的产物。所以我们可以在第一波通胀前，第一波通胀后，第二波通胀后这三个时期分别找三个条件相似的球员作为参考。我这里选择的是菲戈，卡卡和苏亚雷斯，理由是三人在转会时实力均为能竞争当世前三的进攻球员，而且都不算特别年轻，转会费没有潜力加成。三人的转会费分别是菲戈5610万美元，卡卡6500万欧元和苏亚雷斯8100万欧元。由于美元兑欧元的汇率在15年前和现在基本颠倒了所以这里对币种差异就忽略不计了。可得出两次通胀中顶级球星的涨幅大概是16%和25%。苏亚雷斯转会巴萨已经两年了，这两年随着球市泡沫进一步吹大和中国资本的介入，转会市场普遍又有一小波上涨，初步估计涨幅在15%左右。可能有些人会对这个结果感到诧异，毕竟区区25%的涨幅远远低于大多数球迷的实际感受。但实际上在两次通胀中顶级球星本来就不是推动物价上涨的主力，通胀真正的主力是那些“小妖”、“新星”和“潜力股”们。18岁的鲁尼在第一波通胀前转会仅仅花了曼联2700万英镑，而去年夏天，成就远不如当年的鲁尼的21岁斯特林就花了曼城5000万英镑，至于博格巴和内马尔这个级别的年轻人不掏一亿欧元想都别想。年轻球员从两次通胀前到现在的涨幅最保守估计也翻了一倍。除了全面的通货膨胀之外，转会市场的另一个变化是欧洲职业足球商业化的进程大大加深了，简单来说，小贝的颜值和知名度对身价的加成会比当年多很多。以前面的例子来分析，苏牙放到15年前可能卖价和菲戈差不多，但菲戈放到今天卖得一定比苏牙贵，因为苏牙的场外影响力和知名度都和菲戈卡卡差太远了。小罗，齐达内放到今天的商业价值我给10%的额外加成，大罗20%，小贝35%。综上所述，这几人在今天的转会费大概是大罗（02年4425万欧元转会皇马）×1.16×1.25×1.15×1.15＝8900万欧元玻璃人体质极大影响了他的价格。小罗（03年23岁2800万美元转会巴萨）×2×1.1＝6200万欧元如前所述忽略币种，年轻球员100%的涨幅是一个很保守的估计，实际可能更高，05年的巅峰小罗找不到当年的报价所以没法计算，期待高人补充。齐达内（01年6450万美元转会皇马）×1.16×1.25×1.15×1.1＝11800万欧元不要忘记齐达内转会的时候已经29岁了。贝克汉姆（03年3000万欧元转会皇马）×1.16×1.25×1.15×1.35＝6750万欧元边前卫本来就价格偏低，而且联盟皇马时小贝巅峰已过，这个价格已经相当了不起了。最后补一个惊天bug人物——布冯（01年5400万欧元转会尤文）×2×1.1＝11900万欧元价值一亿两千万的门将，我选择死亡', '2016-06-24 18:38:45', '3', '13');
+INSERT INTO `answer` VALUES ('36', '测试', '2016-06-25 17:11:16', '1', '1');
 
 -- ----------------------------
--- Table structure for `fsanswer`
+-- Table structure for fsanswer
 -- ----------------------------
 DROP TABLE IF EXISTS `fsanswer`;
 CREATE TABLE `fsanswer` (
@@ -100,7 +101,7 @@ INSERT INTO `fsanswer` VALUES ('8', '22', '24');
 INSERT INTO `fsanswer` VALUES ('9', '22', '25');
 
 -- ----------------------------
--- Table structure for `fstopic`
+-- Table structure for fstopic
 -- ----------------------------
 DROP TABLE IF EXISTS `fstopic`;
 CREATE TABLE `fstopic` (
@@ -173,7 +174,7 @@ INSERT INTO `fstopic` VALUES ('56', '6', '10');
 INSERT INTO `fstopic` VALUES ('57', '1', '49');
 
 -- ----------------------------
--- Table structure for `qtp`
+-- Table structure for qtp
 -- ----------------------------
 DROP TABLE IF EXISTS `qtp`;
 CREATE TABLE `qtp` (
@@ -230,7 +231,7 @@ INSERT INTO `qtp` VALUES ('37', '21', '14');
 INSERT INTO `qtp` VALUES ('38', '21', '15');
 
 -- ----------------------------
--- Table structure for `qu`
+-- Table structure for qu
 -- ----------------------------
 DROP TABLE IF EXISTS `qu`;
 CREATE TABLE `qu` (
@@ -249,7 +250,7 @@ CREATE TABLE `qu` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `question`
+-- Table structure for question
 -- ----------------------------
 DROP TABLE IF EXISTS `question`;
 CREATE TABLE `question` (
@@ -283,7 +284,7 @@ INSERT INTO `question` VALUES ('14', '英国脱欧后，对英国体育的发展
 INSERT INTO `question` VALUES ('15', '英国退欧后会对英超产生什么影响？', '比如，博斯曼法案会失效吗？影响如何？', '2016-06-24 18:26:20', '8');
 
 -- ----------------------------
--- Table structure for `tag`
+-- Table structure for tag
 -- ----------------------------
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (
@@ -297,7 +298,7 @@ CREATE TABLE `tag` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `topic`
+-- Table structure for topic
 -- ----------------------------
 DROP TABLE IF EXISTS `topic`;
 CREATE TABLE `topic` (
@@ -367,7 +368,7 @@ INSERT INTO `topic` VALUES ('51', '黑科技', null, null);
 INSERT INTO `topic` VALUES ('52', '生物科技', null, null);
 
 -- ----------------------------
--- Table structure for `userinfo`
+-- Table structure for userinfo
 -- ----------------------------
 DROP TABLE IF EXISTS `userinfo`;
 CREATE TABLE `userinfo` (
@@ -385,24 +386,24 @@ INSERT INTO `userinfo` VALUES ('1', 'tiaoyu', 'include', 'come，baby！');
 INSERT INTO `userinfo` VALUES ('2', '盖伦', 'include', '人在塔在！');
 INSERT INTO `userinfo` VALUES ('3', '萧井陌 ', 'include', '微信公众号：炼瓜研究所 技术社区');
 INSERT INTO `userinfo` VALUES ('4', 'EZ', 'include', null);
-INSERT INTO `userinfo` VALUES ('5', null, null, null);
-INSERT INTO `userinfo` VALUES ('6', null, null, null);
-INSERT INTO `userinfo` VALUES ('7', null, null, null);
-INSERT INTO `userinfo` VALUES ('8', null, null, null);
-INSERT INTO `userinfo` VALUES ('9', null, null, null);
-INSERT INTO `userinfo` VALUES ('10', null, null, null);
-INSERT INTO `userinfo` VALUES ('11', null, null, null);
-INSERT INTO `userinfo` VALUES ('12', null, null, null);
-INSERT INTO `userinfo` VALUES ('13', null, null, null);
-INSERT INTO `userinfo` VALUES ('14', null, null, null);
-INSERT INTO `userinfo` VALUES ('15', null, null, null);
-INSERT INTO `userinfo` VALUES ('16', null, null, null);
-INSERT INTO `userinfo` VALUES ('17', null, null, null);
-INSERT INTO `userinfo` VALUES ('18', null, null, null);
-INSERT INTO `userinfo` VALUES ('19', null, null, null);
+INSERT INTO `userinfo` VALUES ('5', '随便', 'dsfasdg', '哈哈哈');
+INSERT INTO `userinfo` VALUES ('6', '好多', 'enenne', '哈哈哈');
+INSERT INTO `userinfo` VALUES ('7', '爱的方式', 'asdasg', '哦哦哦');
+INSERT INTO `userinfo` VALUES ('8', '大', 'adfsdf', '嗯嗯嗯嗯');
+INSERT INTO `userinfo` VALUES ('9', '阿道夫', 'saf', null);
+INSERT INTO `userinfo` VALUES ('10', '暗示', 'adsfdf', null);
+INSERT INTO `userinfo` VALUES ('11', '阿斯蒂芬', 'asfasd', null);
+INSERT INTO `userinfo` VALUES ('12', '海威特', 'adsfag', null);
+INSERT INTO `userinfo` VALUES ('13', '委托人', 'assgdas', null);
+INSERT INTO `userinfo` VALUES ('14', '王宏伟', 'asdg', null);
+INSERT INTO `userinfo` VALUES ('15', '微软', 'asgd', null);
+INSERT INTO `userinfo` VALUES ('16', '分公司', 'asg', null);
+INSERT INTO `userinfo` VALUES ('17', '煽风点火', 'asgd', null);
+INSERT INTO `userinfo` VALUES ('18', '谁都会', 'asg', null);
+INSERT INTO `userinfo` VALUES ('19', '天王天后', 'asgd', null);
 
 -- ----------------------------
--- Table structure for `utp`
+-- Table structure for utp
 -- ----------------------------
 DROP TABLE IF EXISTS `utp`;
 CREATE TABLE `utp` (
@@ -414,8 +415,10 @@ CREATE TABLE `utp` (
   KEY `FKUTPTPID` (`TPID`),
   CONSTRAINT `FKUTPTPID` FOREIGN KEY (`TPID`) REFERENCES `topic` (`ID`),
   CONSTRAINT `FKUTPUID` FOREIGN KEY (`UID`) REFERENCES `userinfo` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of utp
 -- ----------------------------
+INSERT INTO `utp` VALUES ('1', '10', '1');
+INSERT INTO `utp` VALUES ('2', '6', '1');

@@ -32,11 +32,11 @@ public class AnswerService implements IAnswerService {
 		this.answerDao = answerDao;
 	}
 
-	public UserInfoDao getUserDao() {
+	public UserInfoDao getUserInfoDao() {
 		return userDao;
 	}
 
-	public void setUserDao(UserInfoDao userDao) {
+	public void setUserInfoDao(UserInfoDao userDao) {
 		this.userDao = userDao;
 	}
 
@@ -49,7 +49,6 @@ public class AnswerService implements IAnswerService {
 	}
 
 	public List<Answer> getListByQID(int qid) {
-		System.out.println("qid=" + qid);
 		return answerDao.getByQID(qid);
 	}
 

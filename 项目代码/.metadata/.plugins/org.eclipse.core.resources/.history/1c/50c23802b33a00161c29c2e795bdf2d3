@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.four.qa.model.AAnswer;
 import com.four.qa.model.Answer;
+import com.four.qa.model.Question;
 
 /**
  * @date 2016-6-25
@@ -36,10 +37,8 @@ public interface IAnswerService {
 	public List<Answer> getListByQID(@PathParam("qid") int qid);
 
 	/**
-	 * 通过父答案ID获得字答案
-	 * 
 	 * @author mabing
-	 * @time 2016-6-25 15:22
+	 * @time 2016-6-25 15:22 通过父答案ID获得字答案
 	 * @param fid
 	 * @return
 	 */
@@ -50,10 +49,8 @@ public interface IAnswerService {
 	public List<Answer> getListByAsID(@PathParam("fid") int fid);
 
 	/**
-	 * 新建一个问题的答案
-	 * 
 	 * @author mabing
-	 * @time 2016-6-25 15:24
+	 * @time 2016-6-25 15:24 新建一个问题的答案
 	 * @param a
 	 * @return
 	 */
@@ -64,10 +61,8 @@ public interface IAnswerService {
 	public Answer createAnswer(Answer a);
 
 	/**
-	 * 新建一个答案的答案
-	 * 
 	 * @author mabing
-	 * @time 2016-6-25 15:25
+	 * @time 2016-6-25 15:25 新建一个答案的答案
 	 * @param a
 	 * @return
 	 */

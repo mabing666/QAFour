@@ -11,6 +11,7 @@ import com.four.qa.daoImpl.UserInfoDao;
 import com.four.qa.model.AAnswer;
 import com.four.qa.model.Answer;
 import com.four.qa.serviceInterface.IAnswerService;
+import com.four.qa.serviceInterface.IQuestionService;
 
 /**
  * 2016-6-25
@@ -32,11 +33,11 @@ public class AnswerService implements IAnswerService {
 		this.answerDao = answerDao;
 	}
 
-	public UserInfoDao getUserDao() {
+	public UserInfoDao getUserInfoDao() {
 		return userDao;
 	}
 
-	public void setUserDao(UserInfoDao userDao) {
+	public void setUserInfoDao(UserInfoDao userDao) {
 		this.userDao = userDao;
 	}
 
@@ -49,7 +50,6 @@ public class AnswerService implements IAnswerService {
 	}
 
 	public List<Answer> getListByQID(int qid) {
-		System.out.println("qid=" + qid);
 		return answerDao.getByQID(qid);
 	}
 

@@ -23,6 +23,7 @@ public class AnswerService implements IAnswerService {
 	private AnswerDao answerDao;
 	private UserInfoDao userDao;
 	private QuestionDao questionDao;
+	
 
 	public AnswerDao getAnswerDao() {
 		return answerDao;
@@ -49,7 +50,6 @@ public class AnswerService implements IAnswerService {
 	}
 
 	public List<Answer> getListByQID(int qid) {
-		System.out.println("qid=" + qid);
 		return answerDao.getByQID(qid);
 	}
 

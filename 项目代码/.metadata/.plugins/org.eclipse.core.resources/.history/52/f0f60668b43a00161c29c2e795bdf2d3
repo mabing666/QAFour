@@ -39,7 +39,7 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	 * @return
 	 */
 	public List<Answer> getByQID(int qid) {
-		System.out.println("this is asdao");
+		System.out.println("this is dao");
 		return super.findBy("ID", true, Restrictions.sqlRestriction("QID = '" + qid + "'"));
 	}
 
