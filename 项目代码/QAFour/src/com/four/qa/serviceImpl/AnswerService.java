@@ -58,18 +58,31 @@ public class AnswerService implements IAnswerService {
 	}
 
 	public Answer createAnswer(Answer a) {
+		// 修改by tiaoyu：修复a的属性
+		// @time 2016/6/25 20:17
+		a.setAstime(getCurrentDate());
+		System.out.println(a);
+
 		return answerDao.answerQS(a);
 	}
 
-	public AAnswer createAnswer(AAnswer a) {
+	public AAnswer createAAnswer(AAnswer a) {
+		// 修改by tiaoyu：修复a的属性
+		// @time 2016/6/25 20:18
+
+		System.out.println(a);
 		Answer answer = new Answer();
 		int fid = a.getFID();
 		answer.setAscontent(a.getAscontent());
 		answer.setAstime(getCurrentDate());
 		answer.setAsuser(userDao.get(a.getAsuser()));
-		// answer.setID(a.getID());
-		answer.setQID(questionDao.get(a.getQID()));
-		answerDao.answerAS(answer, fid);
+		
+		//若fid为0说明fid为空 说明此回答是给问题的
+		if (fid == 0) {
+			answerDao.answerQS(answer);
+		} else {
+			answerDao.answerAS(answer, fid);
+		}
 		return a;
 	}
 

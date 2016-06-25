@@ -18,37 +18,63 @@
 
 <title>提问</title>
 </head>
+<style>
+body {
+	margin: 0 auto;
+	text-align: center;
+}
 
+.title {
+	margin: 0 auto;
+}
+
+.title a {
+	font-size: 20px;
+}
+
+.qscontent {
+	width: 600px;
+}
+</style>
 <body>
 	<!-- 加载编辑器的容器 -->
 	<div class="easyui-panel qspanel">
-		<a>问题：</a><input id="qstitle" class="easyui-validatebox qstitle"
-			data-options="required:true,validType:'length[1,100]'" />
-			
-		<script id="container" class="qscontent" name="content"
-			type="text/plain">
-   		 </script>
-		<!-- 配置文件 -->
-		<script type="text/javascript" src="./ueditor/ueditor.config.js"></script>
-		<!-- 编辑器源码文件 -->
-		<script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
-		<!-- 实例化编辑器 -->
-		<script type="text/javascript">
-			var ue = UE.getEditor('container');
-		</script>
-		
-		<div id="qstopic">jsfa</div>
-	
+		<ul>
+			<li>
+				<div class="title">
+					<a>问题：</a><input id="qstitle" class="easyui-validatebox qstitle"
+						data-options="required:true,validType:'length[1,100]'" />
+				</div>
+			</li>
+			<li><div class="qscontent">
+					<textarea id="container" class="qscontent" name="content">
+   			 </textarea>
+					<!-- 配置文件 -->
+					<script type="text/javascript" src="./ueditor/ueditor.config.js"></script>
+					<!-- 编辑器源码文件 -->
+					<script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
+					<!-- 实例化编辑器 -->
+					<script type="text/javascript">
+						var ue = UE.getEditor('container');
+					</script>
+				</div></li>
+
+			<li><div id="qstopic">jsfa</div></li>
+		</ul>
+
 	</div>
 
 
 	<style scoped="scoped">
 .qstitle {
-	height: 20px;
+	font-size: 20px;
+	font-family: "微软雅黑";
+	height: 30px;
 	width: 400px;
 	margin: 0;
 	padding: 0 2px;
 	box-sizing: content-box;
+	height: 30px;
 }
 
 .qspanel {
@@ -56,9 +82,8 @@
 	height: autopx;
 	padding: 10px;
 }
-
-.qscontent {
-	width: 960px;
+.qspanel ul{
+	margin: 0px auto;
 }
 </style>
 </body>

@@ -75,6 +75,6 @@ public interface IAnswerService {
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/createAnswer")
-	public AAnswer createAnswer(AAnswer a);
+	public AAnswer createAAnswer(AAnswer a);
 
 }

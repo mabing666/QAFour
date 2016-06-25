@@ -74,13 +74,20 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	 * @author mabing
 	 * @time 2016-6-24 17:01
 	 * @param answer
+	 * 
+	 * 修改 by tiaoyu:添加异常处理
+	 * @time 2016/6/24 19:59
+	 * 
 	 */
 	public Answer answerQS(Answer answer) {
-		if (answer != null) {
+		System.out.println("this is asdao");
+		try {
+			System.out.println(answer);
 			super.save(answer);
 			return answer;
+		} catch (Exception e) {
+			return null;
 		}
-		return null;
 	}
 
 	/**
@@ -99,6 +106,7 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 			Answer fanswer = getByID(fid);
 			fsanswer.setFID(fanswer);
 			fsanswer.setSID(answer);
+			System.out.println("this is snswer");
 			return answer;
 		}
 		return null;

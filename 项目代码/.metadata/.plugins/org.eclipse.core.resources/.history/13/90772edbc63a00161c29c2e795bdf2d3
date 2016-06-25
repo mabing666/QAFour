@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<div class="navi">
+	<ul>
+		<li><a onclick="question()">提问</a></li>
+		<li><a>条鱼</a></li>
+		<li><a>c</a></li>
+		<li><a>d</a></li>
+	</ul>
+</div>
+<div id="w" class="easyui-window" title="提问"
+	data-options="iconCls:'icon-save',closed:true"
+	style="width: 700px; height: 600px; padding: 5px;">
+	<div>
+	</div>
+</div>
+<script>
+	function question() {
+		$("#w").window("open")
+	}
+</script>

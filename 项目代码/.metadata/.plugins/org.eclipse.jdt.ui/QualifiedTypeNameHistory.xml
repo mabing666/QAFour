@@ -7,7 +7,7 @@
 <fullyQualifiedTypeName name="org.apache.cxf.jaxws.javaee.ResAuthType"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="org.hibernate.criterion.Restrictions"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="javax.ws.rs.PathParam"/>
 <fullyQualifiedTypeName name="com.four.qa.daoBase.BaseDao"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
 </qualifiedTypeNameHistroy>
