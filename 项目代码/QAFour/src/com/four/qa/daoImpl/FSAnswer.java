@@ -1,0 +1,7 @@
+package com.four.qa.daoImpl;
+
+import com.four.qa.daoBase.BaseDao;
+
+public class FSAnswer extends BaseDao<FSAnswer, Integer>{
+
+}
