@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50710
 File Encoding         : 65001
 
-Date: 2016-06-25 15:13:28
+Date: 2016-06-25 15:40:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -112,7 +112,7 @@ CREATE TABLE `fstopic` (
   KEY `FKFSTopicFID` (`FID`),
   CONSTRAINT `FKFSTopicFID` FOREIGN KEY (`FID`) REFERENCES `topic` (`ID`),
   CONSTRAINT `FKFSTopicSID` FOREIGN KEY (`SID`) REFERENCES `topic` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of fstopic
@@ -168,6 +168,9 @@ INSERT INTO `fstopic` VALUES ('51', '3', '5');
 INSERT INTO `fstopic` VALUES ('52', '30', '37');
 INSERT INTO `fstopic` VALUES ('53', '27', '31');
 INSERT INTO `fstopic` VALUES ('54', '27', '32');
+INSERT INTO `fstopic` VALUES ('55', '9', '14');
+INSERT INTO `fstopic` VALUES ('56', '6', '10');
+INSERT INTO `fstopic` VALUES ('57', '1', '49');
 
 -- ----------------------------
 -- Table structure for `qtp`
@@ -182,7 +185,7 @@ CREATE TABLE `qtp` (
   KEY `FKQstpQID` (`QID`),
   CONSTRAINT `FKQTPQID` FOREIGN KEY (`QID`) REFERENCES `question` (`ID`),
   CONSTRAINT `FKQTPTPID` FOREIGN KEY (`TPID`) REFERENCES `topic` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qtp
@@ -202,7 +205,29 @@ INSERT INTO `qtp` VALUES ('12', '24', '9');
 INSERT INTO `qtp` VALUES ('13', '24', '10');
 INSERT INTO `qtp` VALUES ('14', '34', '13');
 INSERT INTO `qtp` VALUES ('15', '34', '14');
-INSERT INTO `qtp` VALUES ('16', null, null);
+INSERT INTO `qtp` VALUES ('16', '6', '1');
+INSERT INTO `qtp` VALUES ('17', '6', '2');
+INSERT INTO `qtp` VALUES ('18', '6', '3');
+INSERT INTO `qtp` VALUES ('19', '6', '4');
+INSERT INTO `qtp` VALUES ('20', '6', '5');
+INSERT INTO `qtp` VALUES ('21', '6', '6');
+INSERT INTO `qtp` VALUES ('22', '6', '11');
+INSERT INTO `qtp` VALUES ('23', '6', '12');
+INSERT INTO `qtp` VALUES ('24', '21', '7');
+INSERT INTO `qtp` VALUES ('25', '21', '8');
+INSERT INTO `qtp` VALUES ('26', '21', '9');
+INSERT INTO `qtp` VALUES ('27', '21', '10');
+INSERT INTO `qtp` VALUES ('28', '22', '7');
+INSERT INTO `qtp` VALUES ('29', '22', '8');
+INSERT INTO `qtp` VALUES ('30', '22', '9');
+INSERT INTO `qtp` VALUES ('31', '22', '10');
+INSERT INTO `qtp` VALUES ('32', '26', '7');
+INSERT INTO `qtp` VALUES ('33', '26', '8');
+INSERT INTO `qtp` VALUES ('34', '26', '9');
+INSERT INTO `qtp` VALUES ('35', '26', '10');
+INSERT INTO `qtp` VALUES ('36', '21', '13');
+INSERT INTO `qtp` VALUES ('37', '21', '14');
+INSERT INTO `qtp` VALUES ('38', '21', '15');
 
 -- ----------------------------
 -- Table structure for `qu`
