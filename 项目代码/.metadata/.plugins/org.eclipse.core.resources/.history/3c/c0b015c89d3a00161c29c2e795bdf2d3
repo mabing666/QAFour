@@ -45,9 +45,8 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	}
 
 	/**
-	 * 获得父答案下的所有子答案
+	 * 获得父答案下的所有子答案 2016-6-24 16:39
 	 * 
-	 * @time 2016-6-24 16:39
 	 * @author mabing
 	 * @param fid
 	 * @return
@@ -58,10 +57,7 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	}
 
 	/**
-	 * 通过关键字查找答案
-	 * 
-	 * @author mabing
-	 * @time 2016-6-25 11:35
+	 * @author mabing 2016-6-25 11:35 通过关键字查找答案
 	 * @param key
 	 * @return
 	 */
@@ -70,10 +66,7 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	}
 
 	/**
-	 * 保存问题的答案
-	 * 
-	 * @author mabing
-	 * @time 2016-6-24 17:01
+	 * @author mabing 2016-6-24 17:01 保存问题的答案
 	 * @param answer
 	 */
 	public Answer answerQS(Answer answer) {
@@ -85,10 +78,7 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	}
 
 	/**
-	 * 保存答案的子答案
-	 * 
-	 * @author mabing
-	 * @time 2016-6-24 23:48
+	 * @author mabing 2016-6-24 23:48 保存答案的子答案
 	 * @param answer
 	 * @param fid
 	 * @return
