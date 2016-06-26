@@ -2,6 +2,12 @@ package com.four.qa.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * 回答和回答问题ID的重构类
+ * 
+ * @date 2016/6/26
+ * @author Tiaoyu
+ */
 @XmlRootElement(name = "QAnswer")
 public class QAnswer {
 

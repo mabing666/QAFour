@@ -65,16 +65,16 @@ public class QuestionDao extends BaseDao<Question, Integer> {
 	 * @author Tiaoyu
 	 * @time 2016/6/24 12:25
 	 * @param q
-	 * @return
+	 * @return Question
 	 */
-	public Question createQuestion(Question q) {
-		try {
-			super.save(q);
-			return q;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+//	public Question createQuestion(Question q) {
+//		try {
+//			super.save(q);
+//			return q;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//	}
 
 }

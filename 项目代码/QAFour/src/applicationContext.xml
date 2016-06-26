@@ -62,6 +62,9 @@
 	<bean id="fsanswerDao" class="com.four.qa.daoImpl.FSAnswerDao">
 	    <property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<bean id="qtpDao" class="com.four.qa.daoImpl.QTPDao">
+	    <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 
 	<!-- REST服务的注解例子 -->
 	<jaxrs:server id="Service" address="/REST">
@@ -73,6 +76,9 @@
 			<!-- 配置QuestionService中的属性dao -->
 			<bean class="com.four.qa.serviceImpl.QuestionService">
 				<property name="questionDao" ref="questionDao"></property>
+				<property name="topicDao" ref="topicDao"></property>
+				<property name="userDao" ref="userDao"></property>
+				<property name="qtpDao" ref="qtpDao"></property>
 			</bean>
 
 			<!-- 配置TopicService中的属性dao -->

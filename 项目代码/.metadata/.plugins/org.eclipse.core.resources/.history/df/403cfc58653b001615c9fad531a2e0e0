@@ -1,0 +1,15 @@
+package com.four.qa.model;
+
+
+
+/**
+ * 问题、话题、用户的重构类
+ * @author Tiaoyu
+ * @date 2016/6/26
+ */
+public class RQuestion {
+	
+	private String qscontent;
+	private int TPID;
+	private int UID;
+}
