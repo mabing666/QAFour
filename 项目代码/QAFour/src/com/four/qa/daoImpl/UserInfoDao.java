@@ -38,4 +38,17 @@ public class UserInfoDao extends BaseDao<UserInfo, Integer> {
 			}
 		}
 	}
+	
+	/**
+	 * 通过用户id获得用户信息
+	 * 
+	 * @time 2016-6-26 17:50
+	 * @author mabing
+	 * @param id
+	 * @return
+	 */
+	public UserInfo getByID(int id)
+	{
+		return super.get(id);
+	}
 }
