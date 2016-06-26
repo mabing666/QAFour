@@ -105,4 +105,17 @@ public interface ITopicService {
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/getSonTopic/{fid}")
 	public List<Topic> getSonTopic(@PathParam("fid") int fid);
+
+	/**
+	 * 通过问题qid获得话题
+	 * 
+	 * @time 2016/6/26 22:58
+	 * @param qid
+	 * @return List
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
+	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+	@Path("/getListByQID/{qid}")
+	public List<Topic> getListByQID(@PathParam("qid") int qid);
 }

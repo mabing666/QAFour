@@ -1,0 +1,104 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="./script/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="./script/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="./script/demo/demo.css">
+<script type="text/javascript" src="./script/jquery.min.js"></script>
+<script type="text/javascript" src="./script/json2.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./script/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="./script/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="./css/header.css">
+<script type="text/javascript" src="./script/jquery.easyui.min.js"></script>
+
+<title>回答</title>
+</head>
+
+
+<body>
+	<jsp:include page="head.jsp"></jsp:include>
+	<div class="main">
+		<div id="wrapper" class="wrapper">
+			<div id="answers_qstopic" class="answers_qstopic"></div>
+		</div>
+
+		<style scoped="scoped">
+.main {
+	background-color: #FFFFFF;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	height: auto;
+}
+
+.wrapper {
+	background-color: #FFFFFF;
+	width: 600px;
+	height: 800px;
+	float: left;
+}
+
+.wrapper ul {
+	list-style: none;
+	margin-top: 15px;
+	float: right;
+}
+
+.wrapper ul li {
+	display: inline-block;
+}
+
+.wrapper ul li a {
+	background-color: #ccc;
+	color: 	#87CEFA;
+	border: solid 1px white;
+	padding: 4px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 10px;
+}
+.wrapper ul li a:hover {
+
+}
+
+
+.clear {
+	clear: both;
+}
+</style>
+	</div>
+</body>
+<script>
+	$.ajax({
+		type : "GET",
+		url : "http://localhost:8080/QAFour/REST/Topic/getListByQID/"
+				+ GetQueryString("QID"),
+		contentType : "application/json",
+		dataType : "json",
+		data : null,
+		success : function(data) {
+			var htm = "<ul>";
+			/* alert(data.length) */
+			for (var i = 0; i < data.length; ++i) {
+				htm += "<li><a onclick='toTopic(" + data[i].ID + ")'>"
+						+ data[i].tpname + "</a></li>";
+			}
+			htm += "</ul>"
+			$("#answers_qstopic").html(htm)
+		}
+	});
+	function GetQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return null;
+	}
+</script>
+</html>

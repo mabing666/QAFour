@@ -1,7 +1,5 @@
 package com.four.qa.model;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**

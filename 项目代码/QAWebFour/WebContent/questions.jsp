@@ -40,17 +40,33 @@
 }
 
 .favourite {
-	width: 600px;
-	height: 100px;
+	height: auto;
 	float: left;
 	background-color: #FFFFFF;
+	width: 600px;
 }
 
-.favourite a {
-	margin-right: 20px;
-	border: 1px solid #ccc;
-	padding: 5px;
-	border-radius: 5px;
+.favourite ul {
+	list-style: none;
+}
+
+.favourite ul li {
+	display: inline-block;
+}
+
+.favourite ul li a {
+	cursor: pointer;
+	background-color: #FFF0F5;
+	color: #FF00FF;
+	border: solid 1px white;
+	padding: 4px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 40px;
+}
+
+.favourite ul li a:hover {
+	background-color: #FFB6C1;
 }
 
 .detail {
@@ -114,7 +130,7 @@
 }
 
 .question {
-	margin-top: 10px;
+	margin-top: 20px;
 	width: 600px;
 	height: auto;
 	background-color: #FFFFFF;
@@ -127,6 +143,7 @@
 }
 
 .qstitle {
+	margin-top: 30px;
 	font-family: "微软雅黑";
 	font-size: 20px;
 }
@@ -146,7 +163,8 @@
 	padding-bottom: 10px;
 	border-bottom: 1px solid #ccc;
 }
-.qsextend a{
+
+.qsextend a {
 	color: #99CCFF;
 	font-style: italic;
 }
@@ -200,13 +218,14 @@
 				dataType : "json",
 				data : null,
 				success : function(data) {
-					var htm = "";
+					var htm = "<ul>";
 					/* alert(data.length) */
 					for (var i = 0; i < data.length; ++i) {
-						htm += "<button onclick='toQuestions(" + data[i].ID
-								+ ")' class='easyui-linkbutton'>"
-								+ data[i].tpname + "</button>";
+						htm += "<li><a onclick='toQuestions(" + data[i].ID
+								+ ")'>"
+								+ data[i].tpname + "</a></li>";
 					}
+					htm += "</ul>"
 					$("#favourite").html(htm)
 				}
 			});
@@ -288,23 +307,28 @@
 		dataType : "json",
 		data : null,
 		success : function(data) {
-			var htm = "";
+			var htm = "<br/><ul>";
 			/* alert(data.length) */
 			for (var i = 0; i < data.length; ++i) {
-				htm += "<br/><ul><li><a class='qstitle'>" + data[i].qstitle
-						+ "</a></li>" + "<li><div class='qsuser'>"
-						+ data[i].qsuser.uname + ", " + data[i].qsuser.ucontent
+				htm += "<li><a class='qstitle' onclick='toAnswers("
+						+ data[i].ID + ")'>" + data[i].qstitle + "</a></li>"
+						+ "<li><div class='qsuser'>" + data[i].qsuser.uname
+						+ ", " + data[i].qsuser.ucontent
 						+ "</div><div class='qstime'>" + data[i].qstime
 						+ "</div></li><br/>" + "<li><div class='qscontent'>"
-						+ data[i].qscontent + "</div></li>"
-						+ "<li><div class='qsextend'><a>评论</a></li></div>"
-						+ "</ul><br/>";
+						+ data[i].qscontent + "</div></li><br/>"
+						+ "<li><div class='qsextend'><a>评论</a></li><br/><br/></div>"
+						;
 			}
+			htm += "</ul><br/>";
 			$("#question").html(htm)
 		}
 	});
 	function toQuestions(id) {
 		location.href = "/QAWebFour/questions.jsp?tpid=" + id;
+	}
+	function toAnswers(id){
+		location.href="/QAWebFour/answers.jsp?QID=" + id;
 	}
 	function GetQueryString(name) {
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

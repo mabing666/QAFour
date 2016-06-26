@@ -19,16 +19,60 @@
 <title>话题广场</title>
 </head>
 <style>
-.ftopics {
+.main {
+	background-color: #FFFFFF;
 	margin-top: 50px;
-	padding: 10px;
-	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	height: auto;
+}
+
+.wrapper {
+	background-color: #FFF;
+	width: 600px;
+	height: 800px;
+	float: left;
+}
+
+.extend {
+	float: right;
+	width: 260px;
+	background-color: #FFF;
+	height: 800px;
+}
+
+.ftopics {
+	margin-top: 5px;
+	float: left;
+	width: 600px;
 	height: auto;
 	border-bottom: 1px solid #ccc;
 }
 
-.ftopics button {
-	margin-right: 15px;
+.ftopics ul {
+	list-style: none;
+}
+
+.ftopics ul li {
+	display: inline-block;
+	margin: 5px;
+}
+
+.ftopics ul li a {
+	font-size: 15px;
+	font-family: "微软雅黑";
+	background-color: #FFF0F5;
+	padding: 4px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 40px;
+	cursor: pointer;
+	background-color: #FFF0F5;
+}
+
+.ftopics ul li a:hover {
+	background-color: #FFB6C1;
 }
 
 .stopics {
@@ -37,7 +81,6 @@
 	padding: 10px;
 	width: 350px;
 	height: auto;
-	border-bottom: 1px solid #ccc;
 	padding: 10px;
 }
 
@@ -46,13 +89,29 @@
 	border: 1px solid #ccc;
 	padding: 5px;
 	border-radius: 5px;
+	cursor: pointer;
+	s
+}
+
+.stopics a:hover {
+	background-color: #ccc;
+}
+
+.clear {
+	clear: both;
 }
 </style>
 
 <body>
 	<jsp:include page="head.jsp"></jsp:include>
-	<div class="ftopics" id="ftopics"></div>
-	<div class="stopics" id="stopics"></div>
+	<div class="main">
+		<div class="wrapper">
+			<div class="ftopics" id="ftopics"></div>
+			<div class="clear"></div>
+			<div class="stopics" id="stopics"></div>
+		</div>
+		<div class="extend"></div>
+	</div>
 </body>
 <script>
 	$.ajax({
@@ -64,11 +123,12 @@
 		success : function(data) {
 			var htm = "";
 			/* alert(data.length) */
+			htm = "<ul>";
 			for (var i = 0; i < data.length; ++i) {
-				htm += "<button onclick='getAllTopics(" + data[i].ID
-						+ ")' class='easyui-linkbutton'>" + data[i].tpname
-						+ "</button>";
+				htm += "<li><a onclick='getAllTopics(" + data[i].ID + ")'>"
+						+ data[i].tpname + "</a></li>";
 			}
+			htm += "</ul>"
 			$("#ftopics").html(htm)
 			getAllTopics(data[0].ID)
 		}

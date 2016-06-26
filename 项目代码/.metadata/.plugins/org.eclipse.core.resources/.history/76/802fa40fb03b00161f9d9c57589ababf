@@ -1,0 +1,77 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="./script/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="./script/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="./script/demo/demo.css">
+<script type="text/javascript" src="./script/jquery.min.js"></script>
+<script type="text/javascript" src="./script/json2.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./script/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="./script/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="./css/header.css">
+<script type="text/javascript" src="./script/jquery.easyui.min.js"></script>
+
+<title>回答</title>
+</head>
+
+<style>
+.main {
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	height: auto;
+}
+
+.qstopic {
+	width: 600px;
+	height: auto;
+	float: left;
+}
+.clear {
+	clear: both;
+}
+</style>
+<body>
+	<jsp:include page="head.jsp"></jsp:include>
+	<div class="main">
+		<div class="qstopic">
+			<ul>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+</body>
+<script>
+	$.ajax({
+		type : "GET",
+		url : "http://localhost:8080/QAFour/REST/Topic/getListByQID/"
+				+ GetQueryString("QID"),
+		contentType : "application/json",
+		dataType : "json",
+		data : null,
+		success : function(data) {
+			var htm = "";
+			/* alert(data.length) */
+			for (var i = 0; i < data.length; ++i) {
+				htm += "<ul>"
+					+ "<li><a onclick='toTopic("+data[i].ID+")'>"+ data[i].tpname +"</a></li>"
+					+"</ul>";
+			}
+			$("#favourite").html(htm)
+		}
+	});
+	function GetQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return null;
+	}
+</script>
+</html>

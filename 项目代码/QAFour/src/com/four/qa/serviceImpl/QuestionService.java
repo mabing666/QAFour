@@ -85,8 +85,9 @@ public class QuestionService implements IQuestionService {
 				qtp.setTPID(topic);
 				System.out.println("this is for");
 				qtpDao.save(qtp);
+				System.out.println("qtp save complete");
 			}
-
+			System.out.println("complete");
 			return question;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,5 +118,10 @@ public class QuestionService implements IQuestionService {
 			e1.printStackTrace();
 		}
 		return tm;
+	}
+
+	@Override
+	public Question getTopicByTPID(int qid) {
+		return questionDao.get(qid);
 	}
 }

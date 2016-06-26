@@ -60,5 +60,17 @@ public interface IQuestionService {
 	@Path("/getListByQKey/{key}")
 	public List<Question> getListByQKey(@PathParam("key") String key);
 
-	
+	/**
+	 * 通过话题tpid获得话题信息
+	 * 
+	 * @author Tiaoyu
+	 * @time 2016/6/26 23:54
+	 * @param tpid
+	 * @return
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
+	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+	@Path("/getTopicByTPID/{qid}")
+	public Question getTopicByTPID(@PathParam("qid") int qid);
 }

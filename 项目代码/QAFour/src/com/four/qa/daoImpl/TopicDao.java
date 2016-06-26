@@ -62,4 +62,9 @@ public class TopicDao extends BaseDao<Topic, Integer> {
 			return null;
 		}
 	}
+
+	public List<Topic> getByQID(int qid) {
+		return super.findBy("ID", true,
+				Restrictions.sqlRestriction("id in (select tpid from qtp where qid = '" + qid + "')"));
+	}
 }

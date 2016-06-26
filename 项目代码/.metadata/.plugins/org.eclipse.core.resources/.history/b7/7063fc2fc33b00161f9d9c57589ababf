@@ -1,0 +1,163 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="./script/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="./script/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="./script/demo/demo.css">
+<script type="text/javascript" src="./script/jquery.min.js"></script>
+<script type="text/javascript" src="./script/json2.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./script/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="./script/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="./css/header.css">
+<script type="text/javascript" src="./script/jquery.easyui.min.js"></script>
+
+<title>话题广场</title>
+</head>
+<style>
+.main {
+	background-color: #FFFFFF;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	height: auto;
+}
+
+.wrapper {
+	background-color: #FFF;
+	width: 600px;
+	height: 800px;
+	float: left;
+}
+
+.extend {
+	float: right;
+	width: 260px;
+	background-color: #FFF;
+	height: 800px;
+}
+
+.ftopics {
+	margin-top: 5px;
+	float: left;
+	width:500px;
+	height: auto;
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+}
+
+.ftopics ul {
+	list-style: none;
+}
+
+.ftopics ul li {
+	display: inline-block;
+	margin: 5px;
+}
+
+.ftopics ul li a {
+	font-size: 15px;
+	font-family: "微软雅黑";
+	background-color: #FFF0F5;
+	padding: 4px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 40px;
+	cursor: pointer;
+	background-color: #FFF0F5;
+}
+
+.ftopics ul li a:hover {
+	background-color: #FFB6C1;
+}
+
+.stopics {
+	margin-top: 50px;
+	margin-left: 50px;
+	padding: 10px;
+	width: 350px;
+	height: auto;
+	padding: 10px;
+}
+
+.stopics a {
+	margin-right: 20px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	s
+}
+
+.stopics a:hover {
+	background-color: #ccc;
+}
+
+.clear {
+	clear: both;
+}
+</style>
+
+<body>
+	<jsp:include page="head.jsp"></jsp:include>
+	<div class="main">
+		<div class="wrapper">
+			<div class="ftopics" id="ftopics"></div>
+			<div class="clear"></div>
+			<div class="stopics" id="stopics"></div>
+		</div>
+		<div class="extend"></div>
+	</div>
+</body>
+<script>
+	$.ajax({
+		type : "GET",
+		url : "http://localhost:8080/QAFour/REST/Topic/getAllRootTopic",
+		contentType : "application/json",
+		dataType : "json",
+		data : null,
+		success : function(data) {
+			var htm = "";
+			/* alert(data.length) */
+			htm = "<ul>";
+			for (var i = 0; i < data.length; ++i) {
+				htm += "<li><a onclick='getAllTopics(" + data[i].ID + ")'>"
+						+ data[i].tpname + "</a></li>";
+			}
+			htm += "</ul>"
+			$("#ftopics").html(htm)
+			getAllTopics(data[0].ID)
+		}
+	});
+
+	function getAllTopics(id) {
+		$.ajax({
+			type : "GET",
+			url : "http://localhost:8080/QAFour/REST/Topic/getAllRootTopic/"
+					+ id,
+			contentType : "application/json",
+			dataType : "json",
+			data : null,
+			success : function(data) {
+				var htm = "";
+				/* alert(data.length) */
+				for (var i = 0; i < data.length; ++i) {
+					htm += "<a onclick='toQuestions(" + data[i].ID
+							+ ")' class='easyui-linkbutton'>" + data[i].tpname
+							+ "</a>";
+				}
+				$("#stopics").html(htm)
+			}
+		});
+	}
+
+	function toQuestions(id) {
+		location.href = "/QAWebFour/questions.jsp?tpid=" + id;
+	}
+</script>
+</html>
