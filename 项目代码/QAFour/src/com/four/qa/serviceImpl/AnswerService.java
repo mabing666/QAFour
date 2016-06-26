@@ -6,10 +6,13 @@ import java.util.Date;
 import java.util.List;
 
 import com.four.qa.daoImpl.AnswerDao;
+import com.four.qa.daoImpl.FSAnswerDao;
 import com.four.qa.daoImpl.QuestionDao;
 import com.four.qa.daoImpl.UserInfoDao;
 import com.four.qa.model.AAnswer;
 import com.four.qa.model.Answer;
+import com.four.qa.model.FSAnswer;
+import com.four.qa.model.QAnswer;
 import com.four.qa.serviceInterface.IAnswerService;
 
 /**
@@ -23,6 +26,7 @@ public class AnswerService implements IAnswerService {
 	private AnswerDao answerDao;
 	private UserInfoDao userDao;
 	private QuestionDao questionDao;
+	private FSAnswerDao fsanswerDao;
 
 	public AnswerDao getAnswerDao() {
 		return answerDao;
@@ -48,6 +52,15 @@ public class AnswerService implements IAnswerService {
 		this.questionDao = questionDao;
 	}
 
+	public FSAnswerDao getFsanswerDao() {
+		return fsanswerDao;
+	}
+
+	public void setFsanswerDao(FSAnswerDao fsanswerDao) {
+		this.fsanswerDao = fsanswerDao;
+	}
+
+	// 方法
 	public List<Answer> getListByQID(int qid) {
 		System.out.println("qid=" + qid);
 		return answerDao.getByQID(qid);
@@ -57,33 +70,64 @@ public class AnswerService implements IAnswerService {
 		return answerDao.getByFID(fid);
 	}
 
-	public Answer createAnswer(Answer a) {
+	public Answer createAnswer(QAnswer a) {
 		// 修改by tiaoyu：修复a的属性
 		// @time 2016/6/25 20:17
-		a.setAstime(getCurrentDate());
-		System.out.println(a);
+		// 修改by tiaoyu： 修复bug
+		// @time 2016/6/26 13:45
 
-		return answerDao.answerQS(a);
+		try {
+
+			Answer answer = new Answer();
+			answer.setAstime(getCurrentDate());
+			answer.setQID(questionDao.get(a.getQID()));
+			answer.setAscontent(a.getAscontent());
+			answer.setAsuser(userDao.get(a.getUID()));
+
+			answerDao.save(answer);
+			System.out.println(a);
+
+			return answer;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public AAnswer createAAnswer(AAnswer a) {
 		// 修改by tiaoyu：修复a的属性
 		// @time 2016/6/25 20:18
-
+		// 修改by tiaoyu：修改逻辑
+		// @time 2016/6/26 10:38
+		// 修改by tiaoyu：修复bug
+		// @time 2016/6/26 13:40
 		System.out.println(a);
-		Answer answer = new Answer();
-		int fid = a.getFID();
-		answer.setAscontent(a.getAscontent());
-		answer.setAstime(getCurrentDate());
-		answer.setAsuser(userDao.get(a.getAsuser()));
-		
-		//若fid为0说明fid为空 说明此回答是给问题的
-		if (fid == 0) {
-			answerDao.answerQS(answer);
-		} else {
-			answerDao.answerAS(answer, fid);
+
+		try {
+
+			// 保存子答案
+			Answer sanswer = new Answer();
+			sanswer.setAscontent(a.getAscontent());
+			sanswer.setAstime(getCurrentDate());
+			sanswer.setAsuser(userDao.get(a.getUID()));
+			answerDao.save(sanswer);
+
+			Answer fanswer = answerDao.get(a.getFID());
+
+			System.out.println(sanswer);
+			System.out.println(fanswer);
+			// 保存父子关系
+			FSAnswer fsanswer = new FSAnswer();
+			fsanswer.setSID(sanswer);
+			fsanswer.setFID(fanswer);
+			System.out.println("set is complete");
+			fsanswerDao.save(fsanswer);
+			return a;
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			return null;
 		}
-		return a;
 	}
 
 	/**

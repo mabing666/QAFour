@@ -1,0 +1,8 @@
+package com.four.qa.model;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="QAnswer")
+public class QAnswer {
+
+}

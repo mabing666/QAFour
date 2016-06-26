@@ -6,7 +6,6 @@ import org.hibernate.criterion.Restrictions;
 
 import com.four.qa.daoBase.BaseDao;
 import com.four.qa.model.Answer;
-import com.four.qa.model.FSAnswer;
 
 /**
  * @author mabing
@@ -79,16 +78,16 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	 * @time 2016/6/24 19:59
 	 * 
 	 */
-	public Answer answerQS(Answer answer) {
-		System.out.println("this is asdao");
-		try {
-			System.out.println(answer);
-			super.save(answer);
-			return answer;
-		} catch (Exception e) {
-			return null;
-		}
-	}
+//	public Answer answerQS(Answer answer) {
+//		System.out.println("this is asdao");
+//		try {
+//			System.out.println(answer);
+//			super.save(answer);
+//			return answer;
+//		} catch (Exception e) {
+//			return null;
+//		}
+//	}
 
 	/**
 	 * 保存答案的子答案
@@ -99,17 +98,19 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	 * @param fid
 	 * @return
 	 */
-	public Answer answerAS(Answer answer, int fid) {
-		if (answer != null) {
-			super.save(answer);
-			FSAnswer fsanswer = new FSAnswer();
-			Answer fanswer = getByID(fid);
-			fsanswer.setFID(fanswer);
-			fsanswer.setSID(answer);
-			System.out.println("this is snswer");
-			return answer;
-		}
-		return null;
-	}
+	// public Answer answerAS(Answer answer, int fid) {
+	// if (answer != null) {
+	// super.save(answer);
+	//
+	// FSAnswer fsanswer = new FSAnswer();
+	// Answer fanswer = getByID(fid);
+	// fsanswer.setFID(fanswer);
+	// fsanswer.setSID(answer);
+	//
+	// System.out.println("this is snswer");
+	// return answer;
+	// }
+	// return null;
+	// }
 
 }

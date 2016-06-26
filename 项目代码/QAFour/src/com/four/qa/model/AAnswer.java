@@ -1,6 +1,6 @@
 package com.four.qa.model;
 
-import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 回答和回答父ID的重构类
@@ -8,38 +8,23 @@ import java.util.Date;
  * @date 2016/6/25
  * @author Tiaoyu
  */
+@XmlRootElement(name = "AAnswer")
 public class AAnswer {
-	private int ID;
 
 	private String ascontent;
 
-	private Date astime;
-
-	private int asuser;
-
-	private int QID;
+	private int UID;
 
 	private int FID;
 
 	public AAnswer() {
 	}
 
-	public AAnswer(int iD, String ascontent, Date astime, int asuser, int qID, int fID) {
+	public AAnswer(String ascontent, int uID, int fID) {
 		super();
-		ID = iD;
 		this.ascontent = ascontent;
-		this.astime = astime;
-		this.asuser = asuser;
-		QID = qID;
+		UID = uID;
 		FID = fID;
-	}
-
-	public int getID() {
-		return ID;
-	}
-
-	public void setID(int iD) {
-		ID = iD;
 	}
 
 	public String getAscontent() {
@@ -50,28 +35,12 @@ public class AAnswer {
 		this.ascontent = ascontent;
 	}
 
-	public Date getAstime() {
-		return astime;
+	public int getUID() {
+		return UID;
 	}
 
-	public void setAstime(Date astime) {
-		this.astime = astime;
-	}
-
-	public int getAsuser() {
-		return asuser;
-	}
-
-	public void setAsuser(int asuser) {
-		this.asuser = asuser;
-	}
-
-	public int getQID() {
-		return QID;
-	}
-
-	public void setQID(int qID) {
-		QID = qID;
+	public void setUID(int uID) {
+		UID = uID;
 	}
 
 	public int getFID() {
@@ -84,8 +53,7 @@ public class AAnswer {
 
 	@Override
 	public String toString() {
-		return "AAnswer [ID=" + ID + ", ascontent=" + ascontent + ", astime=" + astime + ", asuser=" + asuser + ", QID="
-				+ QID + ", FID=" + FID + "]";
+		return "AAnswer [ascontent=" + ascontent + ", UID=" + UID + ", FID=" + FID + "]";
 	}
 
 }

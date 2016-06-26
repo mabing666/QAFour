@@ -30,7 +30,7 @@ public class BaseDao<T, PK extends Serializable> extends HibernateDaoSupport imp
 	protected Class<T> getEntityClass() {
 		return entityClass;
 	}
-
+	
 	/**
 	 * 让spring提供构造函数注入
 	 */

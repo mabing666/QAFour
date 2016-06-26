@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.four.qa.model.AAnswer;
 import com.four.qa.model.Answer;
+import com.four.qa.model.QAnswer;
 
 /**
  * @date 2016-6-25
@@ -60,8 +61,8 @@ public interface IAnswerService {
 	@POST
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
-	@Path("/createAnswer")
-	public Answer createAnswer(Answer a);
+	@Path("/createQAnswer")
+	public Answer createAnswer(QAnswer a);
 
 	/**
 	 * 新建一个答案的答案
@@ -70,11 +71,13 @@ public interface IAnswerService {
 	 * @time 2016-6-25 15:25
 	 * @param a
 	 * @return
+	 * @modify 修改by tiaoyu: 2016/6/26 10:27
+	 * url改动
 	 */
 	@POST
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
-	@Path("/createAnswer")
+	@Path("/createAAnswer")
 	public AAnswer createAAnswer(AAnswer a);
 
 }
