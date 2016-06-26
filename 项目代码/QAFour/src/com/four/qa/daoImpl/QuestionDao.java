@@ -88,6 +88,19 @@ public class QuestionDao extends BaseDao<Question, Integer> {
 	public List<Question> getByKey(String key){
 		return super.findBy("ID", true, Restrictions.sqlRestriction("id in (select id from question where qstitle like '%" + key + "%' or qscontent like '%" + key + "%')"));
 	}
+	
+	/**
+	 * 通过问题id获得问题
+	 * 
+	 * @author mabing
+	 * @time 2016-6-26 17:53
+	 * @param id
+	 * @return
+	 */
+	public Question getByID(int id)
+	{
+		return super.get(id);
+	}
 
 
 }
