@@ -148,5 +148,10 @@ public class AnswerService implements IAnswerService {
 		}
 		return tm;
 	}
+	
+	public List<Answer> getListByAsKey(String key) {
+		return answerDao.getByKey(key);
+	}
+
 
 }

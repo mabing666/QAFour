@@ -76,5 +76,18 @@ public class QuestionDao extends BaseDao<Question, Integer> {
 			return null;
 		}
 	}
+	
+	/**
+	 * 通过问题的题目或内容模糊查找问题
+	 * 
+	 * @author mabing
+	 * @time 2016-6-26 15:29
+	 * @param key
+	 * @return
+	 */
+	public List<Question> getByKey(String key){
+		return super.findBy("ID", true, Restrictions.sqlRestriction("id in (select id from question where qstitle like '%" + key + "%' or qscontent like '%" + key + "%')"));
+	}
+
 
 }

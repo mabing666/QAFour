@@ -29,5 +29,10 @@ public class QuestionService implements IQuestionService {
 	public Question createQuestion(Question q) {
 		return questionDao.createQuestion(q);
 	}
+	
+	public List<Question> getListByQKey(String key) {
+		return questionDao.getByKey(key);
+	}
+
 
 }
