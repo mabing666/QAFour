@@ -45,4 +45,19 @@ public interface IQuestionService {
 	@Path("/createQuestion")
 	public Question createQuestion(Question q);
 	
+	/**
+	 * 通过关键字模糊搜索问题
+	 * 
+	 * @author mabing
+	 * @time 2016-6-26 15:32
+	 * @param key
+	 * @return
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
+	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+	@Path("/getListByQKey/{key}")
+	public List<Question> getListByQKey(@PathParam("key") String key);
+
+	
 }

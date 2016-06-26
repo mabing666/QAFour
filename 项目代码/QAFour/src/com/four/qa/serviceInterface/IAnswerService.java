@@ -79,5 +79,20 @@ public interface IAnswerService {
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/createAAnswer")
 	public AAnswer createAAnswer(AAnswer a);
+	
+	/**
+	 * 通过关键字模糊查找答案
+	 * 
+	 * @author mabing
+	 * @time 2016-6-26 16:49
+	 * @param key
+	 * @return
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
+	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+	@Path("/getListByAsKey/{key}")
+	public List<Answer> getListByAsKey(@PathParam("key") String key);
+
 
 }
