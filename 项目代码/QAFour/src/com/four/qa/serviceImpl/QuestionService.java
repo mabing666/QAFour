@@ -94,6 +94,11 @@ public class QuestionService implements IQuestionService {
 		}
 
 	}
+	
+	public List<Question> getListByQKey(String key) {
+		return questionDao.getByKey(key);
+	}
+
 
 	/**
 	 * 产生一个不带毫秒的时间

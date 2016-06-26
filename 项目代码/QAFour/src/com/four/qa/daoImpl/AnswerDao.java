@@ -55,17 +55,29 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 				Restrictions.sqlRestriction("id in (select sid from fsanswer where fid = '" + fid + "')"));
 	}
 
+//	/**
+//	 * 通过关键字查找答案
+//	 * 
+//	 * @author mabing
+//	 * @time 2016-6-25 11:35
+//	 * @param key
+//	 * @return
+//	 */
+//	public List<Answer> getByKey(String key) {
+//		return super.findLike("ascontent", key, "ID", true);
+//	}
 	/**
 	 * 通过关键字查找答案
 	 * 
 	 * @author mabing
-	 * @time 2016-6-25 11:35
+	 * @time 2016-6-26 15:00
 	 * @param key
 	 * @return
 	 */
-	public List<Answer> getByKey(String key) {
-		return super.findLike("ascontent", key, "ID", true);
+	public List<Answer> getByKey(String key){
+		return super.findBy("ID", true, Restrictions.sqlRestriction("id in (select id from answer where ascontent like '%" + key + "%')"));
 	}
+
 
 	/**
 	 * 保存问题的答案
