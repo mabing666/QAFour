@@ -47,7 +47,7 @@
 				<script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
 				<!-- 实例化编辑器 -->
 				<script type="text/javascript">
-					var ue1 = UE.getEditor('ascontainer');
+					var ue3 = UE.getEditor('ascontainer');
 				</script>
 				<!-- 加载编辑器的容器 -->
 				<textarea id="ascontainer" class="ascontainer">
@@ -228,7 +228,7 @@
 	});
 	$.ajax({
 		type : "GET",
-		url : "http://localhost:8080/QAFour/REST/Question/getQuestionByQID/"
+		url : "http://localhost:8080/QAFour/REST/Question/getTopicByTPID/"
 				+ GetQueryString("QID"),
 		contentType : "application/json",
 		dataType : "json",

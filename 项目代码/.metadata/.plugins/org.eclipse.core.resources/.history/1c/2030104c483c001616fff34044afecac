@@ -189,7 +189,7 @@
 
 			<div class="title" id="title"></div>
 			<div class="sort" id="sort">
-				<a onclick="sort('hot')" class="easyui-linkbutton">热门排序</a> <a>|</a>
+				<a onclick="sort('hot')" class="easyui-linkbutton">热门排序</a> <A>|</A>
 				<a onclick="sort('time')" class="easyui-linkbutton">时间排序</a>
 			</div>
 			<div class="clear" id="clear"></div>
@@ -375,14 +375,14 @@
 	/*
 		问题列表(热门顺序)
 	 */
-	function sort(s) {
+	function hotSort(sort) {
 		var URL = "http://localhost:8080/QAFour/REST/Question/";
-		if (s == "hot") {
-			URL += "getListByTPID/";
-		} else if (s == "time") {
-			URL += "getListByTimeTPID/";
+		if (sort == "hot") {
+			URL += "";
+		} else if (sort == "time") {
+			URL += "getListByTimeTPID";
 		} else {
-			URL += "getListByTPID/";
+			URL += "getListByTimeTPID/";
 		}
 		$.ajax({
 			type : "GET",

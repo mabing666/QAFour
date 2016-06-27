@@ -375,12 +375,12 @@
 	/*
 		问题列表(热门顺序)
 	 */
-	function sort(s) {
+	function sort(sort) {
 		var URL = "http://localhost:8080/QAFour/REST/Question/";
-		if (s == "hot") {
-			URL += "getListByTPID/";
-		} else if (s == "time") {
-			URL += "getListByTimeTPID/";
+		if (sort == "hot") {
+			URL += "getListByTPID";
+		} else if (sort == "time") {
+			URL += "getListByTimeTPID";
 		} else {
 			URL += "getListByTPID/";
 		}

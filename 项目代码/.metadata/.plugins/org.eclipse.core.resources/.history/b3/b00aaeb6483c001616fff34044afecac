@@ -378,9 +378,9 @@
 	function sort(s) {
 		var URL = "http://localhost:8080/QAFour/REST/Question/";
 		if (s == "hot") {
-			URL += "getListByTPID/";
+			URL += "getListByTPID";
 		} else if (s == "time") {
-			URL += "getListByTimeTPID/";
+			URL += "getListByTimeTPID";
 		} else {
 			URL += "getListByTPID/";
 		}
