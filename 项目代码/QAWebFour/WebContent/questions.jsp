@@ -8,6 +8,7 @@
 	href="./script/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="./script/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="./script/demo/demo.css">
+<script type="text/javascript" src="./script/cookie.js"></script>
 <script type="text/javascript" src="./script/jquery.min.js"></script>
 <script type="text/javascript" src="./script/json2.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -15,7 +16,9 @@
 <link rel="stylesheet" type="text/css" href="./script/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="./css/header.css">
 <script type="text/javascript" src="./script/jquery.easyui.min.js"></script>
-
+<script type="text/javascript" charset="UTF-8">
+   window.UEDITOR_HOME_URL = "/QAWebFour/ueditor/";//编辑器项目路径
+</script>
 <title>问题广场</title>
 </head>
 <style>
@@ -40,17 +43,33 @@
 }
 
 .favourite {
-	width: 600px;
-	height: 100px;
+	height: auto;
 	float: left;
 	background-color: #FFFFFF;
+	width: 600px;
 }
 
-.favourite a {
-	margin-right: 20px;
-	border: 1px solid #ccc;
-	padding: 5px;
-	border-radius: 5px;
+.favourite ul {
+	list-style: none;
+}
+
+.favourite ul li {
+	display: inline-block;
+}
+
+.favourite ul li a {
+	cursor: pointer;
+	background-color: #FFF0F5;
+	color: #FF00FF;
+	border: solid 1px white;
+	padding: 4px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 40px;
+}
+
+.favourite ul li a:hover {
+	background-color: #FFB6C1;
 }
 
 .detail {
@@ -114,7 +133,7 @@
 }
 
 .question {
-	margin-top: 10px;
+	margin-top: 20px;
 	width: 600px;
 	height: auto;
 	background-color: #FFFFFF;
@@ -127,6 +146,8 @@
 }
 
 .qstitle {
+	cursor: pointer;
+	margin-top: 30px;
 	font-family: "微软雅黑";
 	font-size: 20px;
 }
@@ -146,9 +167,12 @@
 	padding-bottom: 10px;
 	border-bottom: 1px solid #ccc;
 }
-.qsextend a{
+
+.qsextend a {
+	cursor: pointer;
 	color: #99CCFF;
 	font-style: italic;
+	color: #99CCFF;
 }
 
 .clear {
@@ -165,8 +189,8 @@
 
 			<div class="title" id="title"></div>
 			<div class="sort" id="sort">
-				<a class="easyui-linkbutton">热门排序</a> <A>|</A> <a
-					class="easyui-linkbutton">时间排序</a>
+				<a onclick="sort('hot')" class="easyui-linkbutton">热门排序</a> <a>|</a>
+				<a onclick="sort('time')" class="easyui-linkbutton">时间排序</a>
 			</div>
 			<div class="clear" id="clear"></div>
 
@@ -186,8 +210,51 @@
 
 		</div>
 	</div>
+	<div id="wanswer" class="easyui-window wanswer" title="回答"
+		data-options="iconCls:'icon-save',closed:true, modal:true,draggable:false,"
+		style="width: 700px; height: 700px; padding: 5px;">
+		<a id="wasqid" class="wasqid" style="display: none;"></a>
+		<div class="wascontent">
+			<!-- 配置文件 -->
+			<script type="text/javascript" src="./ueditor/ueditor.config.js"></script>
+			<!-- 编辑器源码文件 -->
+			<script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
+			<!-- 实例化编辑器 -->
+			<script type="text/javascript">
+				var ue2 = UE.getEditor('ascontainer');
+			</script>
+			<!-- 加载编辑器的容器 -->
+			<textarea id="ascontainer" class="ascontainer">
+			</textarea>
+			<br /> <br /> <a onclick="postAnswer();" class="easyui-linkbutton"
+				iconCls="icon-ok">发布</a>
+		</div>
+		<style scoped="scoped">
+.wascontent {
+	margin-top: 20px;
+}
+</style>
+	</div>
 </body>
 <script>
+	/*easyui层级*/
+	$("#wanswer").window({
+		onOpen : function() {
+			$(".panel").css("z-index", "999");
+			$(".window-shadow").css("z-index", "998");
+			$(".window-mask").css("z-index", "997")
+		},
+		onMove : function(left, top) {
+			$(".panel").css("z-index", "999");
+			$(".window-shadow").css("z-index", "998");
+		},
+		onResize : function(width, height) {
+			$(".panel").css("z-index", "999");
+			$(".window-shadow").css("z-index", "998");
+
+		}
+
+	});
 	/*
 		获得用户关注的话题
 	 */
@@ -200,13 +267,13 @@
 				dataType : "json",
 				data : null,
 				success : function(data) {
-					var htm = "";
+					var htm = "<ul>";
 					/* alert(data.length) */
 					for (var i = 0; i < data.length; ++i) {
-						htm += "<button onclick='toQuestions(" + data[i].ID
-								+ ")' class='easyui-linkbutton'>"
-								+ data[i].tpname + "</button>";
+						htm += "<li><a onclick='toQuestions(" + data[i].ID
+								+ ")'>" + data[i].tpname + "</a></li>";
 					}
+					htm += "</ul>"
 					$("#favourite").html(htm)
 				}
 			});
@@ -288,23 +355,67 @@
 		dataType : "json",
 		data : null,
 		success : function(data) {
-			var htm = "";
+			var htm = "<br/><ul>";
 			/* alert(data.length) */
 			for (var i = 0; i < data.length; ++i) {
-				htm += "<br/><ul><li><a class='qstitle'>" + data[i].qstitle
-						+ "</a></li>" + "<li><div class='qsuser'>"
-						+ data[i].qsuser.uname + ", " + data[i].qsuser.ucontent
+				htm += "<li><a class='qstitle' onclick='toAnswers("
+						+ data[i].ID + ")'>" + data[i].qstitle + "</a></li>"
+						+ "<li><div class='qsuser'>" + data[i].qsuser.uname
+						+ ", " + data[i].qsuser.ucontent
 						+ "</div><div class='qstime'>" + data[i].qstime
 						+ "</div></li><br/>" + "<li><div class='qscontent'>"
-						+ data[i].qscontent + "</div></li>"
-						+ "<li><div class='qsextend'><a>评论</a></li></div>"
-						+ "</ul><br/>";
+						+ data[i].qscontent + "</div></li><br/>"
+						+ "<li><div class='qsextend'><a onclick='answer("
+						+ data[i].ID + ")'>我来回答</a></li><br/><br/></div>";
 			}
+			htm += "</ul><br/>";
 			$("#question").html(htm)
 		}
 	});
+	/*
+		问题列表(热门顺序)
+	 */
+	function sort(s) {
+		var URL = "http://localhost:8080/QAFour/REST/Question/";
+		if (s == "hot") {
+			URL += "getListByTPID/";
+		} else if (s == "time") {
+			URL += "getListByTimeTPID/";
+		} else {
+			URL += "getListByTPID/";
+		}
+		$.ajax({
+			type : "GET",
+			url : URL + GetQueryString("tpid"),
+			contentType : "application/json",
+			dataType : "json",
+			data : null,
+			success : function(data) {
+				var htm = "<br/><ul>";
+				/* alert(data.length) */
+				for (var i = 0; i < data.length; ++i) {
+					htm += "<li><a class='qstitle' onclick='toAnswers("
+							+ data[i].ID + ")'>" + data[i].qstitle
+							+ "</a></li>" + "<li><div class='qsuser'>"
+							+ data[i].qsuser.uname + ", "
+							+ data[i].qsuser.ucontent
+							+ "</div><div class='qstime'>" + data[i].qstime
+							+ "</div></li><br/>"
+							+ "<li><div class='qscontent'>" + data[i].qscontent
+							+ "</div></li><br/>"
+							+ "<li><div class='qsextend'><a onclick='answer("
+							+ data[i].ID + ")'>我来回答</a></li><br/><br/></div>";
+				}
+				htm += "</ul><br/>";
+				$("#question").html(htm)
+			}
+		});
+	}
 	function toQuestions(id) {
 		location.href = "/QAWebFour/questions.jsp?tpid=" + id;
+	}
+	function toAnswers(id) {
+		location.href = "/QAWebFour/answers.jsp?QID=" + id;
 	}
 	function GetQueryString(name) {
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -312,6 +423,36 @@
 		if (r != null)
 			return unescape(r[2]);
 		return null;
+	}
+	function answer(qid) {
+		$("#wanswer").window("open");
+		/* alert(qid) */
+		$("#wasqid").text(qid)
+		/* alert($("#wasqid").text()) */
+	}
+	function postAnswer() {
+		$.ajax({
+			type : "POST",
+			url : "http://localhost:8080/QAFour/REST/Answer/createQAnswer",
+			contentType : "application/json",
+			dataType : "json",
+			data : getAnswer(),
+			success : function(data) {
+				/* alert(data); */
+				location.href = "/QAWebFour/answers.jsp?QID=" + data.QID.ID;
+			},
+			error : function(data) {
+				alert(data);
+			}
+		});
+	}
+	function getAnswer() {
+		var json = {
+			'ascontent' : UE.getEditor('ascontainer').getContent(),
+			'QID' : $("#wasqid").text(),
+			'UID' : getCookieValue("UID")
+		};
+		return JSON.stringify(json);
 	}
 </script>
 </html>

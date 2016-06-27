@@ -74,7 +74,7 @@ public class QuestionService implements IQuestionService {
 
 			questionDao.save(question);
 			System.out.println("question save complete");
-			
+
 			String[] s = q.getTPID().split(",");
 			System.out.println("String=" + s);
 			for (int i = 0; i < s.length; ++i) {
@@ -85,8 +85,9 @@ public class QuestionService implements IQuestionService {
 				qtp.setTPID(topic);
 				System.out.println("this is for");
 				qtpDao.save(qtp);
+				System.out.println("qtp save complete");
 			}
-
+			System.out.println("complete");
 			return question;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -94,15 +95,24 @@ public class QuestionService implements IQuestionService {
 		}
 
 	}
-	
+
 	public List<Question> getListByQTKey(String key) {
 		return questionDao.getByTitleKey(key);
 	}
-	
-	public List<Question> getListByQCKey(String key){
+
+	public List<Question> getListByQCKey(String key) {
 		return questionDao.getByConKey(key);
 	}
 
+	@Override
+	public Question getQuestionByQID(int qid) {
+		return questionDao.get(qid);
+	}
+
+	@Override
+	public List<Question> getListByTimeTPID(int tpid) {
+		return questionDao.getByTimeTPID(tpid);
+	}
 
 	/**
 	 * 产生一个不带毫秒的时间

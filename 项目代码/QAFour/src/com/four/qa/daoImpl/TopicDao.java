@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.criterion.Restrictions;
 
 import com.four.qa.daoBase.BaseDao;
-import com.four.qa.model.Answer;
 import com.four.qa.model.Topic;
 
 /**
@@ -63,7 +62,12 @@ public class TopicDao extends BaseDao<Topic, Integer> {
 			return null;
 		}
 	}
-	
+
+	public List<Topic> getByQID(int qid) {
+		return super.findBy("ID", true,
+				Restrictions.sqlRestriction("id in (select tpid from qtp where qid = '" + qid + "')"));
+	}
+
 	/**
 	 * 对话题的模糊搜索
 	 * 
@@ -72,7 +76,8 @@ public class TopicDao extends BaseDao<Topic, Integer> {
 	 * @param key
 	 * @return
 	 */
-	public List<Topic> getByKey(String key){
-		return super.findBy("ID", true, Restrictions.sqlRestriction("id in (select id from topic where tpname like '%" + key + "%')"));
+	public List<Topic> getByKey(String key) {
+		return super.findBy("ID", true,
+				Restrictions.sqlRestriction("id in (select id from topic where tpname like '%" + key + "%')"));
 	}
 }

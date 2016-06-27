@@ -22,6 +22,7 @@ public interface IQuestionService {
 
 	/**
 	 * 通过话题tpid获得问题
+	 * 
 	 * @author Tiaoyu
 	 * @time 2016/6/17 12:26
 	 * @param tpid
@@ -35,6 +36,7 @@ public interface IQuestionService {
 
 	/**
 	 * 创建一个问题
+	 * 
 	 * @author Tiaoyu
 	 * @time 2016/6/24 12:29
 	 * @param q
@@ -45,7 +47,7 @@ public interface IQuestionService {
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/createQuestion")
 	public Question createQuestion(RQuestion q);
-	
+
 	/**
 	 * 通过关键字模糊搜索问题
 	 * 
@@ -59,12 +61,12 @@ public interface IQuestionService {
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/getListByQTKey/{key}")
 	public List<Question> getListByQTKey(@PathParam("key") String key);
-	
+
 	/**
 	 * 通过关键字模糊搜索问题描述
 	 * 
 	 * @author mabing
-	 * @time 2016-6-27 15:31 
+	 * @time 2016-6-27 15:31
 	 * @param key
 	 * @return
 	 */
@@ -74,5 +76,31 @@ public interface IQuestionService {
 	@Path("/getListByQCKey/{key}")
 	public List<Question> getListByQCKey(@PathParam("key") String key);
 
-	
+	/**
+	 * 通过问题qid获得问题信息
+	 * 
+	 * @author Tiaoyu
+	 * @time 2016/6/26 23:54
+	 * @param tpid
+	 * @return
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
+	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+	@Path("/getQuestionByQID/{qid}")
+	public Question getQuestionByQID(@PathParam("qid") int qid);
+
+	/**
+	 * 通过话题tpid获得问题（按时间排序）
+	 * 
+	 * @author Tiaoyu
+	 * @time 2016/6/27
+	 * @param tpid
+	 * @return List
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
+	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+	@Path("/getListByTimeTPID/{tpid}")
+	public List<Question> getListByTimeTPID(@PathParam("tpid") int tpid);
 }

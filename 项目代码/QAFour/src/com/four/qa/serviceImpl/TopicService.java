@@ -50,7 +50,10 @@ public class TopicService implements ITopicService {
 		return topicDao.getByFID(fid);
 	}
 
-	
+	@Override
+	public List<Topic> getListByQID(int qid) {
+		return topicDao.getByQID(qid);
+	}	
 	public List<Topic> getListByTopicKey(String key) {
 		return topicDao.getByKey(key);
 	}

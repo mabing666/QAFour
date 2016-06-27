@@ -1,0 +1,42 @@
+/*添加cookie*/
+function addCookie(name, value, days, path) {
+	var name = escape(name);
+	var value = escape(value);
+	var expires = new Date();
+	//expires.setTime(expires.getTime() + days * 3600 * 24 * 1000); // Date.prototype.setTime();要求的单位是millisecond
+	expires.setTime(expires.getTime() + days * 1000); // Date.prototype.setTime();要求的单位是millisecond
+	path = path == "" ? "" : ";path=" + path;
+
+	//参数days只能是数字型的
+	var _expires = (typeof days) == "String" ? "" : ";expires=" + expires.toUTCString();
+	document.cookie = name + "=" + value + _expires + path;
+}
+
+/*获取cookie的值*/
+function getCookieValue(name) {
+	var name = escape(name);
+	var allCookies = document.cookie;
+	var arrCookies = allCookies.split("; ");
+	console.log(arrCookies);
+	var value = "";
+	for (var i = 0; i < arrCookies.length; i++) {
+		var arr = arrCookies[i].split("=");
+		if (arr[0] == name) {
+			value = arr[1];
+			break;
+		}
+	}
+	return (value);
+}
+
+//删除cookie ，即设置其失效
+function deleteCookie(name, value, path) {
+	var name = escape(name);
+	var value = escape(value);
+	path = path == "" ? "" : ";path=" + path;
+	var expires = new Date();
+	expires.setTime(expires.getTime() - 1000);
+	_expires = ";expires=" + expires.toUTCString();
+	document.cookie = name + "=" + _expires + path;
+	console.log(document.cookie);
+}

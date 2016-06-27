@@ -1,0 +1,127 @@
+package com.four.qa.serviceImpl;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import com.four.qa.daoImpl.QTPDao;
+import com.four.qa.daoImpl.QuestionDao;
+import com.four.qa.daoImpl.TopicDao;
+import com.four.qa.daoImpl.UserInfoDao;
+import com.four.qa.model.QTP;
+import com.four.qa.model.Question;
+import com.four.qa.model.RQuestion;
+import com.four.qa.model.Topic;
+import com.four.qa.serviceInterface.IQuestionService;
+
+/**
+ * @author Tiaoyu
+ * @date 2016/6/17
+ */
+public class QuestionService implements IQuestionService {
+
+	private QuestionDao questionDao;
+	private UserInfoDao userDao;
+	private QTPDao qtpDao;
+	private TopicDao topicDao;
+
+	public QuestionDao getQuestionDao() {
+		return questionDao;
+	}
+
+	public void setQuestionDao(QuestionDao questionDao) {
+		this.questionDao = questionDao;
+	}
+
+	public UserInfoDao getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserInfoDao userDao) {
+		this.userDao = userDao;
+	}
+
+	public QTPDao getQtpDao() {
+		return qtpDao;
+	}
+
+	public void setQtpDao(QTPDao qtpDao) {
+		this.qtpDao = qtpDao;
+	}
+
+	public TopicDao getTopicDao() {
+		return topicDao;
+	}
+
+	public void setTopicDao(TopicDao topicDao) {
+		this.topicDao = topicDao;
+	}
+
+	public List<Question> getListByTPID(int tpid) {
+		return questionDao.getByTPID(tpid);
+	}
+
+	public Question createQuestion(RQuestion q) {
+		System.out.println(q);
+		try {
+
+			Question question = new Question();
+			question.setQscontent(q.getQscontent());
+			question.setQstime(getCurrentDate());
+			question.setQsuser(userDao.get(q.getUID()));
+			question.setQstitle(q.getQstitle());
+
+			questionDao.save(question);
+			System.out.println("question save complete");
+			
+			String[] s = q.getTPID().split(",");
+			System.out.println("String=" + s);
+			for (int i = 0; i < s.length; ++i) {
+				QTP qtp = new QTP();
+				qtp.setQID(question);
+				Topic topic = topicDao.get(Integer.valueOf(s[i]));
+				System.out.println(topic);
+				qtp.setTPID(topic);
+				System.out.println("this is for");
+				qtpDao.save(qtp);
+				System.out.println("qtp save complete");
+			}
+			System.out.println("complete");
+			return question;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+	
+	public List<Question> getListByQKey(String key) {
+		return questionDao.getByKey(key);
+	}
+
+
+	/**
+	 * 产生一个不带毫秒的时间
+	 * 
+	 * @author mabing
+	 * @time 2016-6-25 15:54
+	 * @return
+	 */
+	public Date getCurrentDate() {
+		// 产生一个不带毫秒的时间,不然,SQL时间和JAVA时间格式不一致
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		Date tm = new Date();
+		try {
+			tm = sdf.parse(sdf.format(new Date()));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		return tm;
+	}
+
+	@Override
+	public Question getTopicByTPID(int tpid) {
+		return questionDao.get(tpid);
+	}
+}
