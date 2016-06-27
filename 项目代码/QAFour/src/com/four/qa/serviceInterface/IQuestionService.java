@@ -11,6 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.four.qa.model.Question;
+import com.four.qa.model.RQuestion;
 
 /**
  * @author Tiaoyu
@@ -43,7 +44,7 @@ public interface IQuestionService {
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/createQuestion")
-	public Question createQuestion(Question q);
+	public Question createQuestion(RQuestion q);
 	
 	/**
 	 * 通过关键字模糊搜索问题

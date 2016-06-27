@@ -21,11 +21,11 @@ public class UserService implements IUserService {
 	}
 
 	public UserInfo doLogin(UserInfo user) {
-		System.out.println(user);
+//		System.out.println(user);
 		UserInfo u = userDao.getByName(user.getUname());
-		System.out.println(u);
+//		System.out.println(u);
 		if (user.getUpwd().equals(u.getUpwd())) {
-			// System.out.println(u);
+			 System.out.println(u);
 			return u;
 		} else {
 			return null;

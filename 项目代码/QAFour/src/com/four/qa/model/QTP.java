@@ -22,8 +22,8 @@ import org.hibernate.annotations.Proxy;
  */
 @Entity
 @Proxy(lazy = false)
-@Table(name = "tq")
-@XmlRootElement(name = "tq")
+@Table(name = "qtp")
+@XmlRootElement(name = "qtp")
 public class QTP {
 
 	@Column(name = "ID", nullable = false)
