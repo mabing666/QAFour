@@ -67,4 +67,17 @@ public class TopicDao extends BaseDao<Topic, Integer> {
 		return super.findBy("ID", true,
 				Restrictions.sqlRestriction("id in (select tpid from qtp where qid = '" + qid + "')"));
 	}
+
+	/**
+	 * 对话题的模糊搜索
+	 * 
+	 * @author mabing
+	 * @time 2016-6-27 16:18
+	 * @param key
+	 * @return
+	 */
+	public List<Topic> getByKey(String key) {
+		return super.findBy("ID", true,
+				Restrictions.sqlRestriction("id in (select id from topic where tpname like '%" + key + "%')"));
+	}
 }

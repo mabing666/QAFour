@@ -1,0 +1,6 @@
+com.four.qa.daoBase
+com.four.qa.daoImpl
+com.four.qa.model
+com.four.qa.serviceException
+com.four.qa.serviceImpl
+com.four.qa.serviceInterface

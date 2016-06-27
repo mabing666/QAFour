@@ -23,6 +23,7 @@ body {
 }
 
 .navi ul li a {
+	cursor: pointer;
 	color: white;
 	border: solid 1px white;
 	padding: 4px;
