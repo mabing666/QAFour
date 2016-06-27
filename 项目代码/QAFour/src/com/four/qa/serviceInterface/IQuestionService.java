@@ -57,8 +57,22 @@ public interface IQuestionService {
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
-	@Path("/getListByQKey/{key}")
-	public List<Question> getListByQKey(@PathParam("key") String key);
+	@Path("/getListByQTKey/{key}")
+	public List<Question> getListByQTKey(@PathParam("key") String key);
+	
+	/**
+	 * 通过关键字模糊搜索问题描述
+	 * 
+	 * @author mabing
+	 * @time 2016-6-27 15:31 
+	 * @param key
+	 * @return
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
+	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+	@Path("/getListByQCKey/{key}")
+	public List<Question> getListByQCKey(@PathParam("key") String key);
 
 	/**
 	 * 通过话题tpid获得话题信息
