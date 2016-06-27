@@ -32,7 +32,7 @@ public class QuestionDao extends BaseDao<Question, Integer> {
 	}
 	
 	/**
-	 * 通过话题tpid获得问题，问题按time排列
+	 * 通过话题tpid获得问题，问题按id排列
 	 * 
 	 * @author mabing
 	 * @time 2016-6-27 15:58
