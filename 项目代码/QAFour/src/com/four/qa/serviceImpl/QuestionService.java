@@ -95,8 +95,12 @@ public class QuestionService implements IQuestionService {
 
 	}
 	
-	public List<Question> getListByQKey(String key) {
-		return questionDao.getByKey(key);
+	public List<Question> getListByQTKey(String key) {
+		return questionDao.getByTitleKey(key);
+	}
+	
+	public List<Question> getListByQCKey(String key){
+		return questionDao.getByConKey(key);
 	}
 
 

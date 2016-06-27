@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.criterion.Restrictions;
 
 import com.four.qa.daoBase.BaseDao;
+import com.four.qa.model.Answer;
 import com.four.qa.model.Topic;
 
 /**
@@ -61,5 +62,17 @@ public class TopicDao extends BaseDao<Topic, Integer> {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	/**
+	 * 对话题的模糊搜索
+	 * 
+	 * @author mabing
+	 * @time 2016-6-27 16:18
+	 * @param key
+	 * @return
+	 */
+	public List<Topic> getByKey(String key){
+		return super.findBy("ID", true, Restrictions.sqlRestriction("id in (select id from topic where tpname like '%" + key + "%')"));
 	}
 }

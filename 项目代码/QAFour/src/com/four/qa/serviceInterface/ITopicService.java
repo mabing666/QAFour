@@ -105,4 +105,18 @@ public interface ITopicService {
 	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
 	@Path("/getSonTopic/{fid}")
 	public List<Topic> getSonTopic(@PathParam("fid") int fid);
+	
+	/**
+	 * 对话题的模糊搜索
+	 * 
+	 * @author mabing
+	 * @time 2016-6-27 16:21
+	 * @param key
+	 * @return
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
+	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+	@Path("/getListByTopicKey/{key}")
+	public List<Topic> getListByTopicKey(@PathParam("key") String key);
 }

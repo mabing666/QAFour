@@ -18,7 +18,7 @@ public class QuestionDao extends BaseDao<Question, Integer> {
 	}
 
 	/**
-	 * 通过话题tpid获得问题
+	 * 通过话题tpid获得问题,问题按id排列
 	 * 
 	 * @author Tiaoyu
 	 * @param tpid
@@ -30,9 +30,22 @@ public class QuestionDao extends BaseDao<Question, Integer> {
 		return super.findBy("ID", true,
 				Restrictions.sqlRestriction("id in (select qid from qtp where tpid ='" + tpid + "')"));
 	}
+	
+	/**
+	 * 通过话题tpid获得问题，问题按id排列
+	 * 
+	 * @author mabing
+	 * @time 2016-6-27 15:58
+	 * @param tpid
+	 * @return
+	 */
+	public List<Question> getByTimeTPID(int tpid){
+		return super.findBy("qstime", false,
+				Restrictions.sqlRestriction("id in (select qid from qtp where tpid ='" + tpid + "')"));
+	}
 
 	/**
-	 * 通过用户uid获得问题
+	 * 通过用户uid获得问题,问题按id排列
 	 * 
 	 * @author Tiaoyu
 	 * @time 2016/6/24 12:12
@@ -45,9 +58,24 @@ public class QuestionDao extends BaseDao<Question, Integer> {
 				Restrictions.sqlRestriction("id in (select qid from qu where uid = '" + uid + "')"));
 
 	}
+	
+	/**
+	 * 通过用户uid获得问题，问题按id排列
+	 * 
+	 * @author mabing
+	 * @time 2016-6-27 16:00
+	 * @param uid
+	 * @return
+	 */
+	public List<Question> getByTimeUID(int uid) {
+
+		return super.findBy("qstime", false,
+				Restrictions.sqlRestriction("id in (select qid from qu where uid = '" + uid + "')"));
+
+	}
 
 	/**
-	 * 通过回答asid获得问题
+	 * 通过回答asid获得问题，问题按id排列
 	 * 
 	 * @author Tiaoyu
 	 * @time 2016/6/24 12:17
@@ -56,6 +84,19 @@ public class QuestionDao extends BaseDao<Question, Integer> {
 	 */
 	public Question getByASID(int asid) {
 		return super.findBy("ID", true,
+				Restrictions.sqlRestriction("id in (select qid from answer where id = '" + asid + "')")).get(0);
+	}
+	
+	/**
+	 * 通过回答asid获得问题，问题按时间排列
+	 * 
+	 * @author mabing
+	 * @time 2016-6-27 16:02
+	 * @param asid
+	 * @return
+	 */
+	public Question getByTimeASID(int asid) {
+		return super.findBy("qstime", false,
 				Restrictions.sqlRestriction("id in (select qid from answer where id = '" + asid + "')")).get(0);
 	}
 
@@ -93,9 +134,30 @@ public class QuestionDao extends BaseDao<Question, Integer> {
 	 * @time 2016-6-26 15:29
 	 * @param key
 	 * @return
+	 * 
 	 */
-	public List<Question> getByKey(String key){
-		return super.findBy("ID", true, Restrictions.sqlRestriction("id in (select id from question where qstitle like '%" + key + "%' or qscontent like '%" + key + "%')"));
+	/**
+	 * 修改  by mabing 
+	 * 对问题标题的搜索，按时间排序，只显示有回答的问题
+	 * 
+	 * @time 2016-6-27 15:22
+	 * @param key
+	 * @return
+	 */
+	public List<Question> getByTitleKey(String key){
+		return super.findBy("qstime", false, Restrictions.sqlRestriction("id in (select qid from answer where qid in (select id from question where id = qid and qstitle like '%"+key+"%'))"));
+	}
+	
+	/**
+	 * 对问题描述的搜索，按时间排序，只显示有回答的问题描述
+	 * 
+	 * @author mabing
+	 * @time 2016-6-27 15:27
+	 * @param key
+	 * @return
+	 */
+	public List<Question> getByConKey(String key){
+		return super.findBy("qstime", false, Restrictions.sqlRestriction("id in (select qid from answer where qid in (select id from question where id = qid and qscontent like '%"+key+"%'))"));
 	}
 	
 	/**

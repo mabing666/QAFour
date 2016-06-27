@@ -31,8 +31,9 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	}
 
 	/**
-	 * 通过问题id找到答案 2016-6-24 16:35
+	 * 通过问题id找到答案 ,答案按id排列
 	 * 
+	 * @time 2016-6-24 16:35
 	 * @author mabing
 	 * @param qid
 	 * @return
@@ -40,6 +41,18 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	public List<Answer> getByQID(int qid) {
 		System.out.println("this is asdao");
 		return super.findBy("ID", true, Restrictions.sqlRestriction("QID = '" + qid + "'"));
+	}
+	
+	/**
+	 * 通过问题id找到答案，答案按时间排序
+	 * 
+	 * @author mabing
+	 * @time 2016-6-27 15:54
+	 * @param qid
+	 * @return
+	 */
+	public List<Answer> getByTimeQID(int qid){
+		return super.findBy("astime", false, Restrictions.sqlRestriction("QID = '" + qid + "'"));
 	}
 
 	/**
@@ -73,9 +86,18 @@ public class AnswerDao extends BaseDao<Answer, Integer> {
 	 * @time 2016-6-26 15:00
 	 * @param key
 	 * @return
+	 * 
+	 * 
+	 */
+	/**
+	 * 修改 by mabing 对答案的模糊搜索，按时间排序
+	 * 
+	 * @time 2016-6-27 16:10
+	 * @param key
+	 * @return
 	 */
 	public List<Answer> getByKey(String key){
-		return super.findBy("ID", true, Restrictions.sqlRestriction("id in (select id from answer where ascontent like '%" + key + "%')"));
+		return super.findBy("astime", false, Restrictions.sqlRestriction("id in (select id from answer where ascontent like '%" + key + "%')"));
 	}
 
 
