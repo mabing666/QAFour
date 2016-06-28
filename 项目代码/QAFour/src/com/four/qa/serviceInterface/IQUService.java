@@ -1,6 +1,5 @@
 package com.four.qa.serviceInterface;
 
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -16,7 +15,7 @@ import com.four.qa.model.RQU;
  *
  */
 public interface IQUService {
-	
+
 	/**
 	 * 保存一个用户对问题的关注
 	 * 

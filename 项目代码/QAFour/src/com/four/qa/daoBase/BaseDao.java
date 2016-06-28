@@ -3,14 +3,14 @@ package com.four.qa.daoBase;
 import java.io.Serializable;
 import java.util.List;
 
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 /**
  * 提供hibernate dao的所有操作
@@ -74,6 +74,20 @@ public class BaseDao<T, PK extends Serializable> extends HibernateDaoSupport imp
 	{
 		return (List<T>) getHibernateTemplate().find(queryString, value);
 	}
+	
+	/**
+	 * 模糊查找
+	 * 
+	 * @author tiaoyu
+	 * @time 2016-6-28 11:41
+	 * @param queryString
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<T> find(String queryString)
+	{
+		return (List<T>) getHibernateTemplate().find(queryString);
+	}
 
 
 	@SuppressWarnings("unchecked")
@@ -89,6 +103,23 @@ public class BaseDao<T, PK extends Serializable> extends HibernateDaoSupport imp
 
 		return (List<T>) getHibernateTemplate().findByCriteria(criteria);
 
+	}
+	
+	/**
+	 * 用于sql语句本身可排序的情况
+	 * 
+	 * @author mabing
+	 * @time 2016-6-28 1:03
+	 * @param criterions
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<T> findBy(Criterion... criterions){
+		DetachedCriteria criteria = DetachedCriteria.forClass(getEntityClass());
+		for (Criterion c : criterions) {
+			criteria.add(c);
+		}
+		return (List<T>) getHibernateTemplate().findByCriteria(criteria);
 	}
 
 	public List<T> findBy(String propertyName, Object value, String orderBy, boolean isAsc) {
@@ -132,5 +163,7 @@ public class BaseDao<T, PK extends Serializable> extends HibernateDaoSupport imp
 	public void clear() {
 		getHibernateTemplate().clear();
 	}
+
+	
 
 }
