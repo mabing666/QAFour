@@ -132,4 +132,9 @@ public class QuestionService implements IQuestionService {
 		}
 		return tm;
 	}
+
+	
+	public List<Question> getListByHotQTKey(String key) {
+		return questionDao.getByHotTitleKey(key);
+	}
 }

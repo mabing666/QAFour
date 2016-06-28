@@ -14,6 +14,18 @@ import com.four.qa.serviceInterface.IUTPService;
 public class UTPService implements IUTPService{
 
 	private UserInfoDao userInfoDao;
+	public UserInfoDao getUserInfoDao() {
+		return userInfoDao;
+	}
+	public void setUserInfoDao(UserInfoDao userInfoDao) {
+		this.userInfoDao = userInfoDao;
+	}
+	public TopicDao getTopicDao() {
+		return topicDao;
+	}
+	public void setTopicDao(TopicDao topicDao) {
+		this.topicDao = topicDao;
+	}
 	private TopicDao topicDao;
 	public UTP saveUTP(RUTP a) {
 		int uid = a.getUid();

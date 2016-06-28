@@ -161,6 +161,22 @@ public class QuestionDao extends BaseDao<Question, Integer> {
 	}
 	
 	/**
+	 * 对问题的搜索，并按热门程度排序
+	 * 
+	 * @author mabing
+	 * @time 2016-6-28 1:05
+	 * @param key
+	 * @return
+	 */
+	public List<Question> getByHotTitleKey(String key){
+		return super.find("from question right join qu on question.id = qu.qid group by question.id order by count(question.id) desc");
+//		return super.findBy(
+//				Restrictions.sqlRestriction("right join qu on question.id = qu.qid group by question.id order by count(question.id) desc;"));
+		
+	
+	}
+	
+	/**
 	 * 通过问题id获得问题
 	 * 
 	 * @author mabing

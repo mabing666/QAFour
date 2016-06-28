@@ -14,5 +14,11 @@ public class QUDao extends BaseDao<QU, Integer>{
 		super(QU.class);
 	}
 	
+	
+//	public List<QU> getByHotTitleKey(String key){
+//		return super.findBy(
+//				Restrictions.sqlRestriction("qid in (select id from question where qstitle like '%"+key+"%') group by qid order by count(*) desc"));
+//	}
+	
 
 }

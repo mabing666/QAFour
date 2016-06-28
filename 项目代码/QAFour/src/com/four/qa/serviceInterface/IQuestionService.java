@@ -77,6 +77,20 @@ public interface IQuestionService {
 	public List<Question> getListByQCKey(@PathParam("key") String key);
 
 	/**
+	 * 通过关键字搜索问题，按热门程度排序
+	 * 
+	 * @author mabing
+	 * @time 2016-6-28 1:06
+	 * @param key
+	 * @return
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON + "; charset=UTF-8" })
+	@Consumes(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+	@Path("/getListByHotQTKey/{key}")
+	public List<Question> getListByHotQTKey(@PathParam("key") String key);
+	
+	/**
 	 * 通过问题qid获得问题信息
 	 * 
 	 * @author Tiaoyu

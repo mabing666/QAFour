@@ -16,8 +16,19 @@ import com.four.qa.serviceInterface.IQUService;
 public class QUService implements IQUService{
 
 	private UserInfoDao userInfoDao;
+	public UserInfoDao getUserInfoDao() {
+		return userInfoDao;
+	}
+	public void setUserInfoDao(UserInfoDao userInfoDao) {
+		this.userInfoDao = userInfoDao;
+	}
+	public QuestionDao getQuestionDao() {
+		return questionDao;
+	}
+	public void setQuestionDao(QuestionDao questionDao) {
+		this.questionDao = questionDao;
+	}
 	private QuestionDao questionDao;
-	
 	public QU saveQU(RQU a) {
 		QU qu = new QU();
 		int qid = a.getQID();

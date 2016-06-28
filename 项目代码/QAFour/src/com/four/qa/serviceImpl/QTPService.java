@@ -14,6 +14,22 @@ import com.four.qa.serviceInterface.IQTPService;
 public class QTPService implements IQTPService{
 
 	private QuestionDao questionDao;
+	public QuestionDao getQuestionDao() {
+		return questionDao;
+	}
+
+	public void setQuestionDao(QuestionDao questionDao) {
+		this.questionDao = questionDao;
+	}
+
+	public TopicDao getTopicDao() {
+		return topicDao;
+	}
+
+	public void setTopicDao(TopicDao topicDao) {
+		this.topicDao = topicDao;
+	}
+
 	private TopicDao topicDao;
 	
 	public QTP saveQTP(RQTP a) {
