@@ -1,0 +1,100 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="./script/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="./script/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="./script/demo/demo.css">
+<script type="text/javascript" src="./script/jquery.min.js"></script>
+<script type="text/javascript" src="./script/json2.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./script/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="./script/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="./css/header.css">
+<script type="text/javascript" src="./script/jquery.easyui.min.js"></script>
+
+<title>搜索</title>
+</head>
+<body>
+	<jsp:include page="head.jsp"></jsp:include>
+	<div class="main">
+		<div class="wrapper">
+			<div class="easyui-panel">
+				<div id="pag"></div>
+			</div>
+		</div>
+		<div class="extend"></div>
+		<style scoped="scoped">
+.main {
+	background-color: #FFFFFF;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	height: auto;
+}
+
+.wrapper {
+	background-color:;
+	width: 600px;
+	height: 800px;
+	float: left;
+}
+
+.extend {
+	float: right;
+	width: 260px;
+	background-color: #FFF;
+	height: 800px;
+}
+</style>
+	</div>
+</body>
+<script type="text/javascript">
+	var _data = search();
+
+	$("page").pagination(
+			{
+				total : _data,
+				pageSize : 10,
+				onSelectPage : function(pageNumber, pageSize) {
+					search();
+					alert(_data)
+					$('#content').panel('refresh',
+							'show_content.php?page=' + pageNumber);
+				}
+			});
+	function search() {
+		var key = GetQueryString("key") + "";
+		var value = GetQueryString("value") + "";
+		alert(key)
+		var URL = "http://localhost:8080/QAFour/REST/";
+		if (key == "qstitle" || key == "qscontent")
+			URL += "Question/getListByQTKey/" + (encodeURI(value));
+		else if (key == "ascontent")
+			URL += "Answer/getListByAsKey/" + value;
+		else
+			URL += "";
+		$.ajax({
+			type : "GET",
+			url : URL,
+			contentType : "application/json",
+			dataType : "json",
+			data : null,
+			success : function(data) {
+				return data;
+			}
+		});
+	}
+	function GetQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return null;
+	}
+</script>
+</html>

@@ -15,9 +15,6 @@
 <link rel="stylesheet" type="text/css" href="./script/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="./css/header.css">
 <script type="text/javascript" src="./script/jquery.easyui.min.js"></script>
-<script type="text/javascript" charset="UTF-8">
-	window.UEDITOR_HOME_URL = "/QAWebFour/ueditor/";//编辑器项目路径
-</script>
 <title>回答</title>
 </head>
 
@@ -37,7 +34,7 @@
 			title="回答"
 			data-options="iconCls:'icon-save',closed:true,
 			modal:true,draggable:false,"
-			style="width: 700px; height: 700px; padding: 5px;">
+			style="width: 700px; height: 400px; padding: 5px;">
 			<a id="answinqid" class="answinqid" style="display: none;"></a>
 
 			<div class="answers_ascontent">
@@ -47,7 +44,7 @@
 				<script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
 				<!-- 实例化编辑器 -->
 				<script type="text/javascript">
-					var ue1 = UE.getEditor('ascontainer');
+					var ue_answers = UE.getEditor('ascontainer');
 				</script>
 				<!-- 加载编辑器的容器 -->
 				<textarea id="ascontainer" class="ascontainer">
