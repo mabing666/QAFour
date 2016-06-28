@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="./css/header.css">
 <script type="text/javascript" src="./script/jquery.easyui.min.js"></script>
 <script type="text/javascript" charset="UTF-8">
-   window.UEDITOR_HOME_URL = "/QAWebFour/ueditor/";//编辑器项目路径
+	window.UEDITOR_HOME_URL = "/QAWebFour/ueditor/";//编辑器项目路径
 </script>
 <title>问题广场</title>
 </head>
@@ -221,10 +221,10 @@
 			<script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
 			<!-- 实例化编辑器 -->
 			<script type="text/javascript">
-				var ue2 = UE.getEditor('ascontainer');
+				var ue_questions = UE.getEditor('questions_container');
 			</script>
 			<!-- 加载编辑器的容器 -->
-			<textarea id="ascontainer" class="ascontainer">
+			<textarea id="questions_container" class="questions_container">
 			</textarea>
 			<br /> <br /> <a onclick="postAnswer();" class="easyui-linkbutton"
 				iconCls="icon-ok">发布</a>
@@ -448,7 +448,7 @@
 	}
 	function getAnswer() {
 		var json = {
-			'ascontent' : UE.getEditor('ascontainer').getContent(),
+			'ascontent' : UE.getEditor('questions_container').getContent(),
 			'QID' : $("#wasqid").text(),
 			'UID' : getCookieValue("UID")
 		};

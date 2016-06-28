@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="javadoc">
+		<item value="-encoding UTF-8 -charset UTF-8" key="vmparam"/>
+		<item value="public" key="access"/>
+		<item value="false" key="noindex"/>
+		<item value="D:\studying\2016项目\软件工程综合实验-2016\软件工程综合实验-2016\QAFour\项目代码\QAFour\javadoc.xml" key="antpath"/>
+		<item value="false" key="nodeprecatedlist"/>
+		<item value="true" key="use"/>
+		<item value="true" key="author"/>
+		<item value="false" key="nodeprecated"/>
+		<item value="false" key="nonavbar"/>
+		<item value="" key="docletpath"/>
+		<item value="C:\Program Files\Java\jdk1.8.0_74\bin\javadoc.exe;C:\Program Files\Java\jdk1.8.0_74\bin\javadoc.exe -encoding utf-8 -charset utf-8" key="javadoc_command_history"/>
+		<item value="1.8" key="source"/>
+		<item value="true" key="version"/>
+		<item value="QAFourAPI文档" key="doctitle"/>
+		<item value="" key="docletname"/>
+		<item value="true" key="splitindex"/>
+		<item value="true" key="fromStandard"/>
+		<item value="false" key="notree"/>
+		<item value="D:\studying\2016项目\软件工程综合实验-2016\软件工程综合实验-2016\QAFour\项目代码\QAFour\doc" key="destdir"/>
+		<item value="false" key="openinbrowser"/>
+		<section name="projects">
+			<section name="QAFour">
+				<item value="D:\studying\2016项目\软件工程综合实验-2016\软件工程综合实验-2016\QAFour\项目代码\QAFour\javadoc.xml" key="antpath"/>
+				<item value="D:\studying\2016项目\软件工程综合实验-2016\软件工程综合实验-2016\QAFour\项目代码\QAFour\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="QAWebFour">
+				<item value="D:\studying\2016项目\软件工程综合实验-2016\软件工程综合实验-2016\QAFour\项目代码\QAWebFour\javadoc.xml" key="antpath"/>
+				<item value="D:\studying\2016项目\软件工程综合实验-2016\软件工程综合实验-2016\QAFour\项目代码\QAWebFour\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Servers">
+				<item value="D:\studying\2016项目\软件工程综合实验-2016\软件工程综合实验-2016\QAFour\项目代码\Servers\javadoc.xml" key="antpath"/>
+				<item value="D:\studying\2016项目\软件工程综合实验-2016\软件工程综合实验-2016\QAFour\项目代码\Servers\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="RemoteSystemsTempFiles">
+				<item value="D:\studying\2016项目\软件工程综合实验-2016\软件工程综合实验-2016\QAFour\项目代码\RemoteSystemsTempFiles\javadoc.xml" key="antpath"/>
+				<item value="D:\studying\2016项目\软件工程综合实验-2016\软件工程综合实验-2016\QAFour\项目代码\RemoteSystemsTempFiles\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+		</section>
+	</section>
+	<section name="NewClassWizardPage">
+		<item value="false" key="create_constructor"/>
+		<item value="true" key="create_unimplemented"/>
+	</section>
+	<section name="OptionalMessageDialog.hide.">
+		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
+	</section>
+	<section name="quick_assist_proposal_size">
+	</section>
+	<section name="JavadocWizardDialog">
+		<item value="616" key="DIALOG_WIDTH"/>
+		<item value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI" key="DIALOG_FONT_NAME"/>
+		<item value="608" key="DIALOG_HEIGHT"/>
+		<item value="350" key="DIALOG_X_ORIGIN"/>
+		<item value="8" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="completion_proposal_size">
+	</section>
+	<section name="JavaElementSearchActions">
+	</section>
+</section>

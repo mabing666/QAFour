@@ -2,18 +2,37 @@
 	pageEncoding="UTF-8"%>
 <script type="text/javascript" src="./script/json2.js"></script>
 <script type="text/javascript" src="./script/cookie.js"></script>
-<script type="text/javascript" charset="UTF-8">
-   window.UEDITOR_HOME_URL = "/QAWebFour/ueditor/";//编辑器项目路径
-</script>
+
 <div class="navi">
 	<ul>
 		<li><a onclick="question()">提问</a></li>
 		<li><a id="uname" class="uname"></a></li>
+
 	</ul>
+	<ul style="margin-top:5px;">
+		<li><input id="ss" style="height:35px;width:440px;"></input>
+			<div id="mm" style="width: 220px;">
+				<div data-options="name:'qstitle',iconCls:'icon-ok'">问题</div>
+				<div data-options="name:'qscontent',iconCls:'icon-ok'">问题描述</div>
+				<div data-options="name:'ascontent',iconCls:'icon-ok'">回答</div>
+			</div></li>
+	</ul>
+
 </div>
+<script>
+	$('#ss').searchbox({
+		searcher : function(value, name) {
+			alert(value + name)
+			location.href = "/QAWebFour/search.jsp?value="+value+"&key="+name;
+		},
+		menu : '#mm',
+		prompt : 'Please Input Value'
+	});
+</script>
+
 
 <div id="wquestion" class="easyui-window wquestion" title="提问"
-	data-options="iconCls:'icon-save',closed:true, modal:true,"
+	data-options="iconCls:'icon-save',closed:true, modal:true,draggable:false,"
 	style="width: 700px; height: 600px; padding: 5px;">
 	<div class="head_title">
 		<a>问题</a><br /> <input id="qstitle" class="easyui-textbox qstitle"
@@ -27,14 +46,12 @@
 	<script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
 	<!-- 实例化编辑器 -->
 	<script type="text/javascript">
-		var ue = UE.getEditor('container');
+		var ue_head = UE.getEditor('head_container');
 	</script>
 	<!-- 加载编辑器的容器 -->
-	<div class="ueditor">
-		<a>描述</a>
-		<textarea id="container" class="container">
+	<a style="font-size: 20px; font-family: '微软雅黑'">描述</a>
+	<textarea id="head_container" class="head_container">
 	</textarea>
-	</div>
 	<br /> <br /> <a>选择话题</a><input id="qstopic"
 		class="easyui-combobox qstopic" style="width: 250px"
 		data-options="
@@ -65,8 +82,7 @@
 }
 
 .ueditor a {
-	font-size: 20px;
-	font-family: "微软雅黑"
+	
 }
 
 .head_title input {
@@ -78,7 +94,7 @@
 </style>
 </div>
 <script>
-	$("#uname").html(getCookieValue("uname"))
+	$("#uname").html(unescape(getCookieValue("uname")))
 	/* //alert(getCookieValue("uname")) */
 	$("#wquestion").window({
 		onOpen : function() {
@@ -88,9 +104,11 @@
 		},
 		onMove : function(left, top) {
 			$(".panel").css("z-index", "999");
+			$(".panel").css("z-index", "999");
 			$(".window-shadow").css("z-index", "998");
 		},
 		onResize : function(width, height) {
+			$(".panel").css("z-index", "999");
 			$(".panel").css("z-index", "999");
 			$(".window-shadow").css("z-index", "998");
 
@@ -115,7 +133,7 @@
 	}
 	function getQuestion() {
 		var json = {
-			'qscontent' : UE.getEditor('container').getContent(),
+			'qscontent' : UE.getEditor('head_container').getContent(),
 			'qstitle' : $('#qstitle').val(),
 			'UID' : "1",
 			'TPID' : $('#qstopic').combobox("getValues") + ""
